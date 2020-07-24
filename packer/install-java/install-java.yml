@@ -1,7 +1,7 @@
 {
     "variables": {
       "gcp_project": "norse-acrobat-203806",
-      "account_file": "C:\Users\cocke\Downloads\norse-acrobat-203806-c215f0a29705.json",
+      "account_file": "/home/ubuntu/norse-acrobat-203806-c215f0a29705.json",
       "gcp_zone": "europe-west2-a"
     },
 
