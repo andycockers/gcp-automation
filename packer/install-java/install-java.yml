@@ -15,6 +15,7 @@
       "image_name": "jenkins-slave-v{{ isotime \"2006010203\" }}",
       "image_family": "jenkins-slave",
       "zone": "{{ user `gcp_zone` }}",
+      "tags": "ssh"
       "on_host_maintenance": "TERMINATE"
     }
   ],
