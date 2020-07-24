@@ -1,0 +1,30 @@
+{
+    "variables": {
+      "gcp_project": "norse-acrobat-203806",
+      "account_file": "C:\Users\cocke\Downloads\norse-acrobat-203806-c215f0a29705.json",
+      "gcp_zone": "europe-west2-a"
+    },
+
+  "builders": [
+    {
+      "type": "googlecompute",
+      "account_file": "{{ user `account_file` }}",
+      "project_id": "{{ user `gcp_project` }}",
+      "source_image_family": "ubuntu-2004-lts",
+      "ssh_username": "ubuntu",
+      "image_name": "jenkins-slave-v{{ isotime \"2006010203\" }}",
+      "image_family": "jenkins-slave",
+      "zone": "{{ user `gcp_zone` }}",
+      "on_host_maintenance": "TERMINATE"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "ansible",
+      "user": "andyc-308@norse-acrobat-203806.iam.gserviceaccount.com",
+      "playbook_file": "../../ansible/install-java.yml",
+      "ansible_env_vars": ["ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3", "ANSIBLE_HOST_KEY_CHECKING=False"]
+    }
+  ]
+  
+}
