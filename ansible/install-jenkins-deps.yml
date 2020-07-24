@@ -5,4 +5,5 @@
     - role: apt-update
     - role: apt-upgrade
     - role: install-java
+    - role: install-unzip
     - role: install-terraform
