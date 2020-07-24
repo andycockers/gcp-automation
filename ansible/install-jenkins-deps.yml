@@ -8,3 +8,4 @@
     - role: install-unzip
     - role: install-terraform
     - role: install-helm
+    - role: install-ansible
