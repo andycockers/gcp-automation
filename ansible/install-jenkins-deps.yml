@@ -9,3 +9,4 @@
     - role: install-terraform
     - role: install-helm
     - role: install-ansible
+    - role: install-kubectl
