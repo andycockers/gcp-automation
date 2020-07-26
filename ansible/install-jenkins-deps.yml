@@ -11,3 +11,4 @@
     - role: install-helm
     - role: install-ansible
     - role: install-python-is-python3
+    - role: install-kubectl
