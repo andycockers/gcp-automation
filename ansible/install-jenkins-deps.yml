@@ -7,6 +7,7 @@
     - role: install-java
     - role: install-unzip
     - role: install-terraform
+    - role: install-packer
     - role: install-helm
     - role: install-ansible
     - role: install-python-is-python3
