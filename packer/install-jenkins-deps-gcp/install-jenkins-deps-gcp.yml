@@ -14,7 +14,9 @@
       "image_family": "jenkins-slave",
       "zone": "{{ user `gcp_zone` }}",
       "tags": "ssh",
-      "on_host_maintenance": "TERMINATE"
+      "on_host_maintenance": "TERMINATE",
+      "omit_external_ip": "true",
+      "use_internal_ip": "true"
     }
   ],
   "provisioners": [
