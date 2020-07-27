@@ -1,11 +1,11 @@
 - name: Add APT signing key for Jenkins
   apt_key:
-    url: https://pkg.jenkins.io/debian/jenkins.io.key
+    url: https://pkg.jenkins.io/debian-stable/jenkins.io.key
     state: present
 
 # Add Jenkins repo into sources list.
 - apt_repository:
-    repo: deb https://pkg.jenkins.io/debian binary
+    repo: http://pkg.jenkins.io/debian-stable binary/
     state: present
 
 - name: Run apt update
