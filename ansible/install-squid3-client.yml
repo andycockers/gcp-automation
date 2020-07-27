@@ -1,0 +1,7 @@
+---
+- hosts: all
+  become: true
+  roles:
+    - role: apt-update
+    - role: apt-upgrade
+    - role: config-squid3-client
