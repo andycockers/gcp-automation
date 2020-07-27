@@ -5,7 +5,7 @@
 
 # Add Jenkins repo into sources list.
 - apt_repository:
-    repo: https://pkg.jenkins.io/debian-stable binary/
+    repo: https://pkg.jenkins.io/debian-stable binary
     state: present
 
 - name: Run apt update
