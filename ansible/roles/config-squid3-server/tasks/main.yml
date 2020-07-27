@@ -1,0 +1,24 @@
+- name: Add http_access allow localnet to /etc/squid/squid.conf
+  lineinfile:
+    path: /etc/squid/squid.conf
+    line: http_access allow localnet
+    create: yes
+
+- name: Add http_access deny to_localhost to /etc/squid/squid.conf
+  lineinfile:
+    path: /etc/squid/squid.conf
+    line: http_access deny to_localhost
+    create: yes
+
+- name: Add acl localnet src 10.0.0.0/20.* to /etc/squid/squid.conf
+  lineinfile:
+    path: /etc/squid/squid.conf
+    line: acl localnet src 10.0.0.0/20.*
+    create: yes
+
+- name: Insert a text block into /etc/squid/squid.conf
+  blockinfile:
+    path: /etc/squid/squid.conf
+    block: |
+      acl to_metadata dst 169.254.169.254
+      http_access deny to_metadata
