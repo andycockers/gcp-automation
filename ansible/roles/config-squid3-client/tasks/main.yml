@@ -1,10 +1,11 @@
-- name: Copy proxy.sh to /etc/profile.d
-  copy:
-    src: proxy.sh
-    dest: /etc/profile.d/proxy.sh
-    owner: root
-    group: root
-    mode: a+x
+- name: Insert a text block into /etc/profile
+  blockinfile:
+    path: /etc/profile
+    block: |
+      export http_proxy="http://squid.us-central1-a.c.jenkins-test-project-284609.internal:3128"
+      export https_proxy="http://squid.us-central1-a.c.jenkins-test-project-284609.internal:3128"
+      export ftp_proxy="http://squid.us-central1-a.c.jenkins-test-project-284609.internal:3128"
+      export no_proxy=169.254.169.254,metadata,metadata.google.internal
 
 - name: cp /etc/sudoers /tmp/sudoers.new
   shell: cp /etc/sudoers /tmp/sudoers.new
