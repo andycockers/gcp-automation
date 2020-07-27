@@ -6,9 +6,17 @@
     group: root
     mode: a+x
 
-- name: Add Defaults env_keep += \"ftp_proxy http_proxy https_proxy no_proxy" to /etc/sudoers
-  lineinfile:
-    path: /etc/sudoers
-    line: Defaults env_keep += \"ftp_proxy http_proxy https_proxy no_proxy"
-    create: yes
-    mode: '440'
+- name: cp /etc/sudoers /tmp/sudoers.new
+  shell: cp /etc/sudoers /tmp/sudoers.new
+
+- name: chmod 640 /tmp/sudoers.new
+  shell: chmod 640 /tmp/sudoers.new
+
+- name: echo "Defaults env_keep += \"ftp_proxy http_proxy https_proxy no_proxy"\" >>/tmp/sudoers.new
+  shell: echo "Defaults env_keep += \"ftp_proxy http_proxy https_proxy no_proxy"\" >>/tmp/sudoers.new
+
+- name: chmod 440 /tmp/sudoers.new
+  shell: chmod 440 /tmp/sudoers.new
+
+- name: visudo -c -f /tmp/sudoers.new && cp /tmp/sudoers.new /etc/sudoers
+  shell: visudo -c -f /tmp/sudoers.new && cp /tmp/sudoers.new /etc/sudoers
