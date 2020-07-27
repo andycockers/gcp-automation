@@ -1,21 +1,24 @@
-- name: Add http_access allow localnet to /etc/squid/squid.conf
-  lineinfile:
-    path: /etc/squid/squid.conf
-    line: http_access allow localnet
-    create: yes
+- name: sudo sed -i 's:#\(http_access allow localnet\):\1:' /etc/squid/squid.conf
+  shell: sudo sed -i 's:#\(http_access allow localnet\):\1:' /etc/squid/squid.conf
 
-- name: Add http_access deny to_localhost to /etc/squid/squid.conf
-  lineinfile:
-    path: /etc/squid/squid.conf
-    line: http_access deny to_localhost
-    create: yes
+- name: sudo sed -i 's:#\(http_access deny to_localhost\):\1:' /etc/squid/squid.conf
+  shell: sudo sed -i 's:#\(http_access deny to_localhost\):\1:' /etc/squid/squid.conf
 
-- name: Add acl localnet src 10.0.0.0/20 to /etc/squid/squid.conf
-  lineinfile:
-    path: /etc/squid/squid.conf
-    line: acl localnet src 10.0.0.0/20
-    create: yes
+- name: sudo sed -i 's:#\(acl localnet src 10.0.0.0/8.*\):\1:' /etc/squid/squid.conf
+  shell: sudo sed -i 's:#\(acl localnet src 10.0.0.0/8.*\):\1:' /etc/squid/squid.conf
 
+- name: sudo sed -i 's:#\(acl localnet src 172.16.0.0/12.*\):\1:' /etc/squid/squid.conf
+  shell: sudo sed -i 's:#\(acl localnet src 172.16.0.0/12.*\):\1:' /etc/squid/squid.conf
+
+- name: sudo sed -i 's:#\(acl localnet src 192.168.0.0/16.*\):\1:' /etc/squid/squid.conf
+  shell: sudo sed -i 's:#\(acl localnet src 192.168.0.0/16.*\):\1:' /etc/squid/squid.conf
+
+- name: sudo sed -i 's:#\(acl localnet src fc00\:\:/7.*\):\1:' /etc/squid/squid.conf
+  shell: sudo sed -i 's:#\(acl localnet src fc00\:\:/7.*\):\1:' /etc/squid/squid.conf
+
+- name: sudo sed -i 's:#\(acl localnet src fe80\:\:/10.*\):\1:' /etc/squid/squid.conf
+  shell: sudo sed -i 's:#\(acl localnet src fe80\:\:/10.*\):\1:' /etc/squid/squid.conf
+  
 - name: Insert a text block into /etc/squid/squid.conf
   blockinfile:
     path: /etc/squid/squid.conf
