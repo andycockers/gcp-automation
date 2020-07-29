@@ -10,7 +10,7 @@
       "type": "googlecompute",
       "account_file": "{{ user `account_file` }}",
       "project_id": "{{ user `gcp_project` }}",
-      "source_image_family": "squid3-client",
+      "source_image_family": "ubuntu-2004-lts",
       "ssh_username": "ubuntu",
       "image_name": "jenkins-server-v{{ isotime \"2006010203\" }}",
       "image_family": "jenkins-server",
