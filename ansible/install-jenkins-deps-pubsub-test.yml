@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: true
+  roles:
+    - role: apt-update
+    - role: apt-upgrade
+    - role: install-java
+    - role: install-maven
+    - role: install-unzip
+    - role: install-terraform
+    - role: install-packer
+    - role: install-helm
+    - role: install-ansible
+    - role: install-python-is-python3
+    - role: install-kubectl
