@@ -1,0 +1,29 @@
+{
+    "variables": {
+      "gcp_project": "jenkins-test-project-284609",
+      "gcp_zone": "europe-west3-a"
+    },
+
+  "builders": [
+    {
+      "type": "googlecompute",
+      "project_id": "{{ user `gcp_project` }}",
+      "source_image_family": "ubuntu-2004-lts",
+      "ssh_username": "ubuntu",
+      "image_name": "pubsub-test-v{{ isotime \"2006010203\" }}",
+      "image_family": "pubsub-test",
+      "zone": "{{ user `gcp_zone` }}",
+      "tags": "ssh",
+      "on_host_maintenance": "TERMINATE"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "ansible",
+      "user": "andyc-963@jenkins-test-project-284609.iam.gserviceaccount.com",
+      "playbook_file": "../../ansible/install-jenkins-deps-pubsub-test.yml",
+      "ansible_env_vars": ["ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3", "ANSIBLE_HOST_KEY_CHECKING=False"]
+    }
+  ]
+  
+}
