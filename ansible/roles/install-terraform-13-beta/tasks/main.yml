@@ -1,0 +1,5 @@
+- name: Download and unzip Terraform 13 to /usr/local/bin
+  unarchive:
+    src: https://releases.hashicorp.com/terraform/0.13.0-beta3/terraform_0.13.0-beta3_linux_amd64.zip
+    dest: /usr/local/bin/terraform13_beta3
+    remote_src: yes
