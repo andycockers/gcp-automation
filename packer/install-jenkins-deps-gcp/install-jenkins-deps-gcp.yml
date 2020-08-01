@@ -14,6 +14,7 @@
       "image_family": "jenkins-slave",
       "zone": "{{ user `gcp_zone` }}",
       "tags": "ssh",
+      "machine_type": "f1-micro",
       "on_host_maintenance": "TERMINATE"
     }
   ],
