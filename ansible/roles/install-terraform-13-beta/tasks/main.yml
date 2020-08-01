@@ -5,7 +5,7 @@
     remote_src: yes
 
 - name: Copy Terraform beta from /tmp and rename it
-    copy:
-      src: /tmp/terraform
-      dest: /usr/local/bin/terraform13
-      remote_src: yes
+  copy:
+    src: /tmp/terraform
+    dest: /usr/local/bin/terraform13
+    remote_src: yes
