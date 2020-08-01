@@ -2,7 +2,7 @@
     "variables": {
       "gcp_project": "jenkins-test-project-284609",
       "gcp_zone": "europe-west3-a",
-      "machine_type": ""
+      "machine_type": "{{env `MACHINE_TYPE`}}"
     },
 
   "builders": [
