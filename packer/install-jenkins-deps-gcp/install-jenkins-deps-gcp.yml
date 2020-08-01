@@ -1,7 +1,8 @@
 {
     "variables": {
       "gcp_project": "jenkins-test-project-284609",
-      "gcp_zone": "europe-west3-a"
+      "gcp_zone": "europe-west3-a",
+      "machine_type": ""
     },
 
   "builders": [
@@ -14,7 +15,7 @@
       "image_family": "jenkins-slave",
       "zone": "{{ user `gcp_zone` }}",
       "tags": "ssh",
-      "machine_type": "f1-micro",
+      "machine_type": "{{user `machine_type`}}",
       "on_host_maintenance": "TERMINATE"
     }
   ],
