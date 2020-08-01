@@ -1,7 +1,7 @@
 {
     "variables": {
-      "gcp_project": "norse-acrobat-203806",
-      "gcp_zone": "europe-west2-a"
+      "gcp_project": "jenkins-test-project-284609",
+      "gcp_zone": "europe-west3-a"
     },
 
   "builders": [
@@ -20,7 +20,7 @@
   "provisioners": [
     {
       "type": "ansible",
-      "user": "andyc-308@norse-acrobat-203806.iam.gserviceaccount.com",
+      "user": "andyc-963@jenkins-test-project-284609.iam.gserviceaccount.com",
       "playbook_file": "../../ansible/install-jenkins-deps.yml",
       "ansible_env_vars": ["ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3", "ANSIBLE_HOST_KEY_CHECKING=False"]
     }
