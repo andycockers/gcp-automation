@@ -3,7 +3,6 @@
     src: https://releases.hashicorp.com/terraform/0.13.0-beta3/terraform_0.13.0-beta3_linux_amd64.zip
     dest: /tmp
     remote_src: yes
-    mode: preserve
 
 - name: Copy Terraform beta from /tmp and rename it
   copy:
