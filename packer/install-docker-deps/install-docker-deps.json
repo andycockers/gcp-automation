@@ -2,7 +2,7 @@
     "builders": [
         {
             "type": "docker",
-            "image": "calmmopey/alpine_python3",
+            "image": "frolvlad/alpine-python3",
             "commit": true
         }
     ],
