@@ -3,7 +3,7 @@
         {
             "type": "docker",
             "image": "alpine",
-            "export_path": "alpine_python3.tar"
+            "commit": true
         }
     ],
 
@@ -15,12 +15,6 @@
     ],
 
     "post-processors": [
-        {
-            "type": "docker-import",
-            "repository": "local/alpine",
-            "tag": "latest"
-        },
-        
         {
             "type": "docker-tag",
             "repository": "calmmopey/jenkins_test",
