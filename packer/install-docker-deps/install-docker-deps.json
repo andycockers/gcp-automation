@@ -1,0 +1,38 @@
+{
+    "builders": [
+        {
+            "type": "docker",
+            "image": "calmmopey/alpine_python3",
+            "commit": true
+        }
+    ],
+
+    "provisioners": [
+        {
+            "type": "ansible",
+            "playbook_file": "../../ansible/install-docker-deps.yml",
+            "ansible_env_vars": ["ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3", "ANSIBLE_HOST_KEY_CHECKING=False"]
+        }
+    ],
+
+    "post-processors": [
+        [
+        {
+            "type": "docker-tag",
+            "repository": "calmmopey/alpine_python3",
+            "tag": "latest"
+        },
+
+        {
+            "type": "docker-push",
+            "login": true,
+            "login_username": "calmmopey",
+            "login_password": "Ye11ow001"
+
+        }
+    ]
+]
+
+
+
+}
