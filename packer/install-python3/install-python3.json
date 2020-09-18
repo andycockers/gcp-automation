@@ -1,0 +1,16 @@
+{
+    "builders": [
+        {
+            "type": "docker",
+            "image": "alpine",
+            "commit": true
+        }
+    ],
+
+    "provisioners": [
+        {
+            "type": "shell",
+            "scripts": "../../shell/install-python3/install.sh"
+        }
+    ]
+}
