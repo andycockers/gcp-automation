@@ -3,7 +3,7 @@
         {
             "type": "docker",
             "image": "alpine",
-            "commit": true
+            "commit": false
         }
     ],
 
