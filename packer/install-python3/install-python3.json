@@ -21,7 +21,12 @@
             "tag": "latest"
         },
         
-        
+        {
+            "type": "docker-tag",
+            "repository": "calmmopey/jenkins_test",
+            "tag": "latest"
+        },
+
         {
             "type": "docker-push",
             "login": true,
