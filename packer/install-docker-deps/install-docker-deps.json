@@ -19,7 +19,7 @@
         [
         {
             "type": "docker-tag",
-            "repository": "calmmopey/alpine_python3",
+            "repository": "calmmopey/alpine_python3_with_deps",
             "tag": "latest"
         },
 
