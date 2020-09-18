@@ -17,7 +17,7 @@
     "post-processors": [
         {
             "type": "docker-tag",
-            "repository": "calmmopey/jenkins_repo",
+            "repository": "calmmopey/jenkins_repo/alpine",
             "tag": "latest"
         },
 
