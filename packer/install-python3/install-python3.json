@@ -12,5 +12,30 @@
             "type": "shell",
             "scripts": "../../shell/install-python3/install.sh"
         }
+    ],
+
+    "post-processors": [
+        {
+            "type": "docker-import",
+            "repository": "local/alpine",
+            "tag": "latest"
+        },
+
+        {
+            "type": "docker-tag",
+            "repository": "calmmopey/jenkins_repo",
+            "tag": "latest"
+        },
+
+        {
+            "type": "docker-push",
+            "login": true,
+            "login_username": "calmmopey",
+            "login_password": "Ye11ow001"
+
+        }
     ]
+
+
+
 }
