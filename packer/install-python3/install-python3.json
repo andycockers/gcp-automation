@@ -18,7 +18,7 @@
         [
         {
             "type": "docker-tag",
-            "repository": "calmmopey/jenkins_test",
+            "repository": "calmmopey/jenkins_repo",
             "tag": "latest"
         },
 
