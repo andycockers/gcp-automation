@@ -1,0 +1,20 @@
+- name: Add APT signing key for Docker
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+# Add Jenkins repo into sources list.
+- apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu stable/
+    state: present
+
+- name: Run apt update
+  package:
+    update_cache: yes
+
+- name: Install Docker
+  package:
+    name: 
+      - docker-ce 
+      - docker-ce-cli 
+      - containerd.io
