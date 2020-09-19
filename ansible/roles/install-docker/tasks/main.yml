@@ -9,7 +9,7 @@
     state: present
 
 - name: Run apt update
-  package:
+  apt:
     update_cache: yes
 
 - name: Install Docker
