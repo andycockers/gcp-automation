@@ -5,7 +5,7 @@
 
 # Add Jenkins repo into sources list.
 - apt_repository:
-    repo: deb https://download.docker.com/linux/ubuntu stable/
+    repo: deb https://download.docker.com/linux/ubuntu focal stable
     state: present
 
 - name: Run apt update
