@@ -16,7 +16,8 @@
       "zone": "{{ user `gcp_zone` }}",
       "tags": "ssh",
       "machine_type": "{{user `machine_type`}}",
-      "on_host_maintenance": "TERMINATE"
+      "on_host_maintenance": "TERMINATE",
+      "preemptible": true
     }
   ],
   "provisioners": [
