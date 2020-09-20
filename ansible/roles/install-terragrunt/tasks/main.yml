@@ -1,0 +1,5 @@
+- name: Copy Terratest to /usr/bin
+  get_url:
+    url: https://github.com/gruntwork-io/terragrunt/releases/download/v0.25.1/terragrunt_linux_amd64
+    dest: /usr/local/bin/terratest
+    mode: u+rwx
