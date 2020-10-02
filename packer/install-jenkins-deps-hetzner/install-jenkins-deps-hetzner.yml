@@ -10,7 +10,7 @@
       "type": "hcloud",
       "token": "{{ user `token` }}",
       "image": "ubuntu-20.04",
-      "location": "({ user `location` })",
+      "location": "{{ user `location` }}",
       "server_type": "{{ user `server_type` }}",
       "ssh_username": "root"
     }
