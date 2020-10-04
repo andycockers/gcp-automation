@@ -2,7 +2,7 @@
     "builders": [
         {
             "type": "docker",
-            "image": "alpine",
+            "image": "frolvlad/alpine-bash",
             "commit": true
         }
     ],
@@ -18,7 +18,7 @@
         [
         {
             "type": "docker-tag",
-            "repository": "calmmopey/alpine_python3",
+            "repository": "calmmopey/alpine-python3",
             "tag": "latest"
         },
 
