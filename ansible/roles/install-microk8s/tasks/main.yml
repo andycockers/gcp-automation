@@ -1,0 +1,6 @@
+#https://docs.ansible.com/ansible/latest/collections/community/general/snap_module.html
+- name: Install microk8s
+  community.general.snap:
+    name: microk8s
+    classic: yes
+    channel: 1.17/stable

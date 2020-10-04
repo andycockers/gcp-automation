@@ -3,3 +3,4 @@
   roles:
   - role: install-zip
   - role: install-unzip
+  - role: install-java-alpine
