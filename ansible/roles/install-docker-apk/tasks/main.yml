@@ -1,0 +1,7 @@
+- name: Install Docker
+  package:
+    name: 
+      - docker
+
+- name: Set docker to start on boot
+  shell: rc-update add docker boot
