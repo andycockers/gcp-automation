@@ -4,8 +4,6 @@
   - role: install-zip
   - role: install-unzip
   - role: install-java-alpine
-  - role: install-pip3-apk
-  - role: install-build-base
   - role: install-ansible-apk
   - role: install-terraform
   - role: install-packer-1.3.5
