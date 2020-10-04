@@ -1,0 +1,3 @@
+- name: Install openrc
+  package:
+    name: openrc
