@@ -1,0 +1,4 @@
+- name: Install gcc
+  package:
+    name: 
+      - build-base
