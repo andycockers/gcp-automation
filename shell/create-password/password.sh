@@ -1,1 +1,1 @@
-echo $PASSWORD > /root/password
+sudo echo $PASSWORD > /root/password
