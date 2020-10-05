@@ -1,0 +1,4 @@
+- name: download swarm jar
+  get_url:
+    url: https://repo.jenkins-ci.org/releases/org/jenkins-ci/plugins/swarm-client/3.9/swarm-client-3.9.jar
+    dest: /usr/local/bin/swarm-client.jar
