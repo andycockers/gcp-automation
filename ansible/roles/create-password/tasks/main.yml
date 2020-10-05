@@ -1,0 +1,3 @@
+-copy:
+   content: "{{ password }}"
+   dest: "/root/password"

@@ -17,6 +17,8 @@
     - role: install-kubectl
     - role: install-docker
     - role: install-terragrunt
+    - role: create-password
     - role: install-swarm-client
   vars_files:
     - vars/swarm.yml
+    - vars/password.yml

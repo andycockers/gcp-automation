@@ -6,7 +6,7 @@
 - name: add env var for swarm
   lineinfile:
     path: /etc/profile
-    line: export SWARM="{{ swarm }}"
+    line: export SWARM="{{ andy }}"
 
 - name: Copy swarm.sh to /usr/local/bin
   copy:
