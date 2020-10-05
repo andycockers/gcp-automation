@@ -24,3 +24,8 @@
     src: swarm.service
     dest: /etc/systemd/system
     mode: 0644
+
+- name: Enable service swarm, and not touch the state
+  service:
+    name: swarm
+    enabled: yes
