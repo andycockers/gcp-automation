@@ -3,7 +3,8 @@
         {
             "type": "docker",
             "image": "frolvlad/alpine-bash",
-            "commit": true
+            "commit": true,
+            "run_command": ["-d", "-i", "-t", "{{.Image}}", "/bin/bash"]
         }
     ],
 
