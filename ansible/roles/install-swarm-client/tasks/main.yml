@@ -13,8 +13,14 @@
     src: swarm.sh
     dest: /usr/local/bin
     mode: 0777
-#Add swarm.sh to cron
-- cron:
-    name: "add swarm.sh to cron"
-    special_time: reboot
-    job: "/usr/local/bin/swarm.sh"
+
+- name: copy swarm command to /usr/local/bin/swarm.sh
+  lineinfile:
+    path: /usr/local/bin/swarm.sh
+    line: java -jar swarm-client.jar -master https://wolfman.crabdance.com -username andy -password "{{ andy }}"
+
+- name: copy service file to /etc/systemd/system
+  copy:
+    src: swarm.service
+    dest: /etc/systemd/system
+    mode: 0644

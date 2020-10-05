@@ -1,0 +1,8 @@
+[Unit]
+After=network.service
+
+[Service]
+ExecStart="/usr/local/bin/swarm.sh"
+
+[Install]
+WantedBy=default.target
