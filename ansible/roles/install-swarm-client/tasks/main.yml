@@ -12,6 +12,7 @@
   copy:
     src: swarm.sh
     dest: /usr/local/bin
+    mode: 0777
 #Add swarm.sh to cron
 - cron:
     name: "add swarm.sh to cron"
