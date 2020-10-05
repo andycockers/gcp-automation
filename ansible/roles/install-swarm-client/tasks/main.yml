@@ -15,5 +15,5 @@
 #Add swarm.sh to cron
 - cron:
     name: "add swarm.sh to cron"
-    special_tile: reboot
+    special_time: reboot
     job: "/usr/local/bin/swarm.sh"
