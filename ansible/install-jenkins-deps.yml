@@ -18,3 +18,5 @@
     - role: install-docker
     - role: install-terragrunt
     - role: install-swarm-client
+  vars_files:
+    - vars/swarm.yml
