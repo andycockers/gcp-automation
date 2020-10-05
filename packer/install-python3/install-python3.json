@@ -24,7 +24,9 @@
 
         {
             "type": "docker-push",
-            "login": false
+            "login": true,
+            "login_username": "calmmopey",
+            "login_password": "Ye11ow001"
 
         }
     ]
