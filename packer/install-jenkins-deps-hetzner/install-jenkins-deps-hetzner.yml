@@ -16,10 +16,15 @@
     }
   ],
   "provisioners": [
-    {
+  {
+        "type": "shell",
+        "scripts": "../../shell/create-password/password.sh"
+  },  
+  
+  {
       "type": "ansible",
       "playbook_file": "../../ansible/install-jenkins-deps.yml",
-      "ansible_env_vars": ["ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3", "ANSIBLE_HOST_KEY_CHECKING=False", "ANSIBLE_VAULT_PASSWORD_FILE=$PASSWORD"]
+      "ansible_env_vars": ["ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3", "ANSIBLE_HOST_KEY_CHECKING=False", "ANSIBLE_VAULT_PASSWORD_FILE=/root/password"]
     }
   ]
   
