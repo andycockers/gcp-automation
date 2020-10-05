@@ -9,3 +9,4 @@
   - role: install-packer-1.3.5
   - role: install-openrc-apk
   - role: install-docker-apk
+  - role: install-git
