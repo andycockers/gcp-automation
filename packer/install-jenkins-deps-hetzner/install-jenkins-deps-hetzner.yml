@@ -1,8 +1,8 @@
 {
     "variables": {
-      "token": "iEcABqtji7a9mx1YZ7P2WDMlkucvpYVNeFbVQjGBZb13H9Ns89GYyq5n8VM2xMHz",
-      "location": "nbg1",
-      "server_type": "cx11"
+      "token": "{{env `TOKEN`}}",
+      "location": "{{env `LOCATION`}}",
+      "server_type": "{{env `SERVER_TYPE`}}"
     },
   
   "builders": [
