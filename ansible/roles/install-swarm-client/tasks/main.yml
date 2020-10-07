@@ -17,7 +17,7 @@
 - name: copy swarm command to /usr/local/bin/swarm.sh
   lineinfile:
     path: /usr/local/bin/swarm.sh
-    line: java -jar swarm-client.jar -master https://wolfman.crabdance.com -username andy -password "{{ andy }}"
+    line: java -jar swarm-client.jar -master https://wolfman.crabdance.com -disableClientsUniqueId -username andy -password "{{ andy }}"
 
 - name: copy service file to /etc/systemd/system
   copy:
