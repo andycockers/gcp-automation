@@ -2,7 +2,7 @@
     "builders": [
         {
             "type": "docker",
-            "image": "idralyuk/alpine-gsutil",
+            "image": "google/cloud-sdk:alpine",
             "commit": true,
             "run_command": ["-d", "-i", "-t", "{{.Image}}", "/bin/sh"]
         }
