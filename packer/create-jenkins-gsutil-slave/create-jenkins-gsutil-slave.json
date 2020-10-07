@@ -10,6 +10,11 @@
 
     "provisioners": [
         {
+            "type": "shell",
+            "scripts": "../../shell/install-python3/install.sh"
+        },
+        
+        {
             "type": "ansible",
             "playbook_file": "../../ansible/install-java-alpine.yml",
             "ansible_env_vars": ["ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3", "ANSIBLE_HOST_KEY_CHECKING=False"]
