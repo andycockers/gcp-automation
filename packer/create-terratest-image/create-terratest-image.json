@@ -10,7 +10,7 @@
     "provisioners": [
         {
             "type": "shell",
-            "scripts": "../../shell/install-python3/install.sh"
+            "scripts": "../../shell/apt/install-python3/install.sh"
         },
 
         {
