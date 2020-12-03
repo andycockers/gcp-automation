@@ -3,7 +3,9 @@
         {
             "type": "docker",
             "image": "calmmopey/alpine-python3",
-            "commit": true
+            "commit": true,
+            "run_command": ["-d", "-i", "-t", "{{.Image}}", "/bin/sh"]
+
         }
     ],
 

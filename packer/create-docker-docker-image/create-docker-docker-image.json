@@ -3,7 +3,8 @@
         {
             "type": "docker",
             "image": "docker",
-            "commit": true
+            "commit": true,
+            "run_command": ["-d", "-i", "-t", "{{.Image}}", "/bin/sh"]
         }
     ],
 
