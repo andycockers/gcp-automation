@@ -8,7 +8,7 @@
     - role: install-java
     - role: install-unzip
     - role: install-terraform
-    - role: install-terraform-13-beta
+    #- role: install-terraform-13-beta
     - role: install-packer
     - role: install-packer-1.3.5
     - role: install-helm

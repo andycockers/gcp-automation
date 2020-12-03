@@ -1,5 +1,5 @@
 - name: Download and unzip Packer to /usr/local/bin
   unarchive:
-    src: https://releases.hashicorp.com/packer/1.6.0/packer_1.6.0_linux_amd64.zip
+    src: https://releases.hashicorp.com/packer/1.6.5/packer_1.6.5_linux_amd64.zip
     dest: /usr/local/bin
     remote_src: yes
