@@ -1,0 +1,6 @@
+---
+- hosts: all
+  roles:
+    - role: install-unzip
+    - role: install-packer
+    - role: install-ansible-apk

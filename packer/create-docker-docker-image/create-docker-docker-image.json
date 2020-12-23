@@ -5,19 +5,18 @@
             "image": "docker",
             "commit": true,
             "run_command": ["-d", "-i", "-t", "{{.Image}}", "/bin/sh"]
-
         }
     ],
 
     "provisioners": [
         {
             "type": "shell",
-            "scripts": "../../shell/install-python3/install.sh"
+            "scripts": "../../shell/apk/install-python3/install.sh"
         },
 
         {
             "type": "ansible",
-            "playbook_file": "../../ansible/install-packer.yml",
+            "playbook_file": "../../ansible/install-packer-deps.yml",
             "ansible_env_vars": ["ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3", "ANSIBLE_HOST_KEY_CHECKING=False"]
         }
     ],
@@ -26,7 +25,7 @@
         [
         {
             "type": "docker-tag",
-            "repository": "calmmopey/docker-packer",
+            "repository": "calmmopey/docker-docker",
             "tag": "latest"
         },
 
