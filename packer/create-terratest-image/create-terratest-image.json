@@ -26,16 +26,13 @@
         [
         {
             "type": "docker-tag",
-            "repository": "calmmopey/terratest-terraform",
+            "repository": "wolfman.crabdance.com/terratest-terraform",
             "tag": "latest"
         },
 
         {
             "type": "docker-push",
-            "login": true,
-            "login_username": "calmmopey",
-            "login_password": "Ye11ow001"
-
+            "login": false
         }
     ]
 ]
