@@ -21,16 +21,13 @@
         [
         {
             "type": "docker-tag",
-            "repository": "calmmopey/alpine-python3-deps",
+            "repository": "wolfman.crabdance.com/alpine-python3-deps",
             "tag": "latest"
         },
 
         {
             "type": "docker-push",
-            "login": true,
-            "login_username": "calmmopey",
-            "login_password": "Ye11ow001"
-
+            "login": false
         }
     ]
 ]

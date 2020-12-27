@@ -25,16 +25,13 @@
         [
         {
             "type": "docker-tag",
-            "repository": "calmmopey/docker-docker",
+            "repository": "wolfman.crabdance.com/docker-docker",
             "tag": "latest"
         },
 
         {
             "type": "docker-push",
-            "login": true,
-            "login_username": "calmmopey",
-            "login_password": "Ye11ow001"
-
+            "login": false
         }
     ]
 ]
