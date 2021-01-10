@@ -2,6 +2,7 @@
 - hosts: all
   become: true
   roles:
+    - role: apt-update
     - role: install-zip
     - role: install-unzip
     - role: install-pip3-apt
