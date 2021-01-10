@@ -1,0 +1,12 @@
+---
+- hosts: all
+  become: true
+  roles:
+    - role: install-zip
+    - role: install-unzip
+    - role: install-pip3-apt
+    - role: install-ansible
+    - role: install-git
+    - role: install-java
+    - role: install-packer
+    - role: install-terraform
