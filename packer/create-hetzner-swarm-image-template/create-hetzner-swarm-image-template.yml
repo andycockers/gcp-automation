@@ -15,7 +15,7 @@
       "ssh_username": "root",
       "snapshot_name": "swarm-image-template",
       "snapshot_labels": {
-                           type = "ubuntu_swarm"
+                           "type" = "ubuntu_swarm"
                           }
     }
   ],
