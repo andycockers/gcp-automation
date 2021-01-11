@@ -1,21 +1,13 @@
-- name: Add APT signing key for Helm
-  apt_key:
-    url: https://helm.baltorepo.com/organization/signing.asc
-    state: present
+- name: Download and untar Helm to /usr/local/bin
+  unarchive:
+    src: https://get.helm.sh/helm-v3.5.0-rc.2-linux-amd64.tar.gz
+    dest: /usr/local/bin
+    remote_src: yes
 
-- name: Install apt-transport-https
-  apt:
-    name: apt-transport-https
-
-# Add Helm repo into sources list.
-- apt_repository:
-    repo: deb https://baltocdn.com/helm/stable/debian/ all main
-    state: present
-
-- name: Run apt update
-  apt:
-    update_cache: yes
-
-- name: Install Helm
-  apt:
-    name: helm
+- name: Copy the Helm executable from /usr/local/bin/linux-amd64 to /usr/local/bin
+  copy:
+    src: /usr/local/bin/linux-amd64/helm
+    dest: /usr/local/bin/helm
+    owner: root
+    group: root
+    mode: 0777
