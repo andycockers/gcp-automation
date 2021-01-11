@@ -14,3 +14,4 @@
     - role: install-kubectl
     - role: install-terragrunt
     - role: install-wget
+    - role: install-curl
