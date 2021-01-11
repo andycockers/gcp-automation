@@ -13,3 +13,4 @@
     - role: install-python-is-python3
     - role: install-kubectl
     - role: install-terragrunt
+    - role: install-wget
