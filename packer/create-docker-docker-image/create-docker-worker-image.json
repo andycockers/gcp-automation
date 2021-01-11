@@ -1,0 +1,41 @@
+{
+    "builders": [
+        {
+            "type": "docker",
+            "image": "ubuntu",
+            "commit": true,
+            "run_command": ["-d", "-i", "-t", "{{.Image}}", "/bin/sh"]
+        }
+    ],
+
+    "provisioners": [
+        {
+            "type": "shell",
+            "scripts": "../../shell/apt/install-python3/install.sh"
+        },
+
+        {
+            "type": "ansible",
+            "playbook_file": "../../ansible/install-docker-worker-deps.yml",
+            "ansible_env_vars": ["ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3", "ANSIBLE_HOST_KEY_CHECKING=False"]
+        }
+    ],
+
+    "post-processors": [
+        [
+        {
+            "type": "docker-tag",
+            "repository": "wolfman.crabdance.com/worker",
+            "tag": "latest"
+        },
+
+        {
+            "type": "docker-push",
+            "login": false
+        }
+    ]
+]
+
+
+
+}
