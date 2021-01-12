@@ -1,10 +1,10 @@
 - name: Create a mountable directory if it does not exist
-      file:
-        path: /mnt/share
-        state: directory
-        owner: root
-        group: root
-        mode: '0777'
+  file:
+     path: /mnt/share
+     state: directory
+     owner: root
+     group: root
+     mode: '0777'
 
 - name: Copy exports to /etc
   copy:
@@ -15,7 +15,7 @@
 - name: copy export command to /etc/exports
   lineinfile:
     path: /etc/exports
-    line: /mnt/share "{{SUBNET_RANGE}}"(rw,sync,no_subtree_check)
+    line: /mnt/share {{SUBNET_RANGE}}(rw,sync,no_subtree_check)
 
 - name: Restart nfs-kernel-server
   service:
