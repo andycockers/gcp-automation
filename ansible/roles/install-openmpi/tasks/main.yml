@@ -1,0 +1,3 @@
+- name: Install openmpi-bin
+  apt:
+    name: openmpi-bin
