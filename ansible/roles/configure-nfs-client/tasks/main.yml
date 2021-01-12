@@ -9,7 +9,7 @@
 #This is a third party module, and can be installed using: ansible-galaxy collection install ansible.posix
 - name: Mount an NFS volume
   ansible.posix.mount:
-    src: "{MANAGER_IP}":/mnt/share
+    src: "{{MANAGER_IP}}":/mnt/share
     path: /mnt/share
     opts: rw,sync,hard,intr
     state: mounted
