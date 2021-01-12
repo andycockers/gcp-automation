@@ -1,0 +1,17 @@
+---
+- hosts: all
+  roles:
+  - role: apt-update
+  - role: install-zip
+  - role: install-unzip
+  - role: install-pip3-apt
+  - role: install-ansible
+  - role: install-git
+  - role: install-openmpi
+  - role: install-nfs-kernel-server
+  - role: install-curl
+  - role: install-wget
+  - role: install-java
+  - role: install-nano
+  - role: install-python-is-python3
+
