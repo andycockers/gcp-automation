@@ -1,17 +1,32 @@
+- name: Create an .ssh folder for use hpc
+  file:
+     path: /home/hpc/.ssh
+     state: directory
+     owner: hpc
+     group: hpc
+     mode: '700'
+
 - name: Copy private key
   copy:
     src: hpc
     dest: /home/hpc/.ssh
+    owner: hpc
+    group: hpc
     mode: 0600
 
 - name: Copy public key
   copy:
     src: hpc.pub
     dest: /home/hpc/.ssh
+    owner: hpc
+    group: hpc
     mode: 0644
 
-- name: Set authorized key taken from file
-  ansible.posix.authorized_key:
-    user: hpc
-    state: present
-    key: "{{ lookup('file', '/home/hpc/.ssh/hpc.pub') }}"
+- name: Copy create authorized_keys file from hpc.pub
+  copy:
+    src: /home/hpc/.ssh/hpc.pub
+    dest: /home/hpc/.ssh/authorized_keys
+    owner: hpc
+    group: hpc
+    mode: 0644
+    remote_src: yes

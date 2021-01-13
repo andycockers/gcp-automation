@@ -2,3 +2,5 @@
 - hosts: all
   roles:
     - role: configure-nfs-server
+    - role: add-user
+    - role: copy-ssh-keypair
