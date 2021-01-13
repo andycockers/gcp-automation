@@ -1,0 +1,17 @@
+- name: Copy private key
+  copy:
+    src: hpc
+    dest: /home/hpc/.ssh
+    mode: 0600
+
+- name: Copy public key
+  copy:
+    src: hpc.pub
+    dest: /home/hpc/.ssh
+    mode: 0644
+
+- name: Set authorized key taken from file
+  ansible.posix.authorized_key:
+    user: hpc
+    state: present
+    key: "{{ lookup('file', '/home/hpc/.ssh/hpc.pub') }}"
