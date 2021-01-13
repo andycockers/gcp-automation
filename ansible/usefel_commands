@@ -1,0 +1,1 @@
+andy@pinebook-pro:~/github/kubernetes/terraform/hetzner-hpc-worker$ ip -f inet addr show wlan0 | sed -En -e 's/.*inet ([0-9.]+).*/\1/p'
