@@ -22,3 +22,9 @@
     name: nfs-kernel-server
     state: restarted
 
+- name: Copy an empty mpi hosts file to /mnt/share
+  copy:
+    src: hosts
+    dest: /mnt/share
+    mode: 0777
+
