@@ -15,3 +15,4 @@
     - role: install-terragrunt
     - role: install-wget
     - role: install-curl
+    - role: install-jq
