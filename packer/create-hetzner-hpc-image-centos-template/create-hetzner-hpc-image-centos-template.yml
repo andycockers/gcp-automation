@@ -9,7 +9,7 @@
     {
       "type": "hcloud",
       "token": "{{ user `token` }}",
-      "image": "CentOS-8.2",
+      "image": "centos-8",
       "location": "{{ user `location` }}",
       "server_type": "{{ user `server_type` }}",
       "ssh_username": "root",
