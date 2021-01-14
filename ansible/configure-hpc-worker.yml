@@ -2,3 +2,4 @@
 - hosts: all
   roles:
     - role: configure-nfs-client
+    - role: add-worker-ips-to-hosts-file
