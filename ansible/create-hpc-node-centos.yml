@@ -6,7 +6,7 @@
   - role: install-unzip
   - role: install-ansible
   - role: install-git
-  - role: install-openmpi
+  - role: install-openmpi-centos
   - role: install-nfs-utils
   - role: install-nfs4-acl-tools
   - role: install-curl
