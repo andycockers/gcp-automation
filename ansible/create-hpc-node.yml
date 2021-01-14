@@ -14,4 +14,6 @@
   - role: install-java
   - role: install-nano
   - role: install-python-is-python3
+  - role: add-user
+  - role: copy-ssh-keypair
 
