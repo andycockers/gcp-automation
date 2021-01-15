@@ -1,0 +1,4 @@
+---
+- hosts: all
+  roles:
+    - role: configure-nfs-server-centos
