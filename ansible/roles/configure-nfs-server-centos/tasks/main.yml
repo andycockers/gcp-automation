@@ -1,6 +1,3 @@
-- name: Wait for system to become reachable
-  wait_for_connection:
-
 - name: Create a mountable directory if it does not exist
   file:
      path: /mnt/share
