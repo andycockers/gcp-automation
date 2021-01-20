@@ -3,3 +3,5 @@
   roles:
     - role: install-unzip
     - role: install-terraform-arm
+    - role: install-snapd
+    - role: install-golang

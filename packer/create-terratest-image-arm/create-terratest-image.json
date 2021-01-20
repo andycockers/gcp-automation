@@ -2,7 +2,7 @@
     "builders": [
         {
             "type": "docker",
-            "image": "golang",
+            "image": "ubuntu",
             "commit": true,
             "run_command": ["-d", "-i", "-t", "{{.Image}}", "/bin/sh"]
 
