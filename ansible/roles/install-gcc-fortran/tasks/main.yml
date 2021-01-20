@@ -1,3 +1,0 @@
-- name: Install gcc-fortran
-  package:
-    name: gcc-fortran

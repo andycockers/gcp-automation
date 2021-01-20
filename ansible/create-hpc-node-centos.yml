@@ -13,6 +13,9 @@
   - role: install-wget
   - role: install-java-yum
   - role: install-nano
+  - role: install-make
+  - role: install-gcc-gfortran
+  - role: install-tar
   - role: add-user
   - role: copy-ssh-keypair
 

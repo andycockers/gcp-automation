@@ -2,4 +2,4 @@
 - hosts: all
   roles:
     - role: wait-for-connection
-    - role: configure-nfs-server
+    - role: configure-nfs-server-centos
