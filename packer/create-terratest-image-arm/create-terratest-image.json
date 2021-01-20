@@ -4,7 +4,9 @@
             "type": "docker",
             "image": "ubuntu",
             "commit": true,
-            "run_command": ["-d", "-i", "-t", "{{.Image}}", "/bin/sh"]
+            "run_command": ["-d", "-i", "-t", "{{.Image}}", "/bin/sh"],
+            "changes": ["ENV PATH=/usr/local/bin/go/bin:$PATH"]
+
 
         }
     ],
