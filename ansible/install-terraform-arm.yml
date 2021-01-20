@@ -2,6 +2,7 @@
 - hosts: all
   roles:
     - role: install-unzip
+    - role: install-java
     - role: install-terraform-arm
     - role: install-snapd
     - role: install-golang
