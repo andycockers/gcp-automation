@@ -1,0 +1,49 @@
+- name: Install dependencies
+  package:
+    name: 
+      - bash
+      - coreutils
+      - curl
+      - git
+      - git-lfs
+      - openssh-client
+      - tini
+      - ttf-dejavu
+      - tzdata
+      - unzip
+
+- name: Add group jenkins
+  ansible.builtin.group:
+    name: jenkins
+    gid: 1000
+    state: present
+
+- name: Add user jenkins
+  user:
+    name: jenkins
+    comment: jenkins
+    uid: 1000
+    group: jenkins
+
+- name: Create folder /var/jenkins_home
+  file:
+     path: /var/jenkins_home
+     state: directory
+     owner: jenkins
+     group: jenkins
+     mode: '700'
+
+- name: Create folder /usr/share/jenkins
+  file:
+     path: /usr/share/jenkins
+     state: directory
+     owner: jenkins
+     group: jenkins
+     mode: '700'
+
+- name: Copy a jenkins war to /usr/share/jenkins
+  ansible.builtin.copy:
+    src: https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/{{JENKINS_VERSION}}/jenkins-war-{{JENKINS_VERSION}}.war
+    dest: /usr/share/jenkins
+    remote_src: yes
+    mode: '0700'
