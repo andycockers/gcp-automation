@@ -1,5 +1,5 @@
-# Install a snap with classic confinement
-- name: Install "golang" with option --classic
-  community.general.snap:
-    name: golang
-    classic: yes
+- name: Download and unzip Terraform to /usr/local/bin
+  unarchive:
+    src: https://golang.org/dl/go1.15.7.linux-arm64.tar.gz
+    dest: /usr/local/bin
+    remote_src: yes
