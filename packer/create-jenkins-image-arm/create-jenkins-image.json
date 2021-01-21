@@ -1,0 +1,54 @@
+{   "variables": {
+    "JENKINS_VERSION": "{{env `JENKINS_VERSION`}}"
+    
+  },
+
+    "builders": [
+        {
+            "type": "docker",
+            "image": "openjdk:8-jdk-alpine",
+            "commit": true,
+            "run_command": ["-d", "-i", "-t", "{{.Image}}", "/bin/sh"],
+            "changes": [
+                "ENV JENKINS_HOME=/var/jenkins_home",
+                "ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log",
+                "EXPOSE 8080 50000",
+                "ENTRYPOINT [\"/sbin/tini\", \"--\", \"/usr/local/bin/jenkins.sh\"]"
+                ]
+
+
+        }
+    ],
+
+    "provisioners": [
+        {
+            "type": "shell",
+            "scripts": "../../shell/apk/install-python3/install.sh"
+        },
+
+        {
+            "type": "ansible",
+            "playbook_file": "../../ansible/create-jenkins-image-arm.yml",
+            "ansible_env_vars": ["ANSIBLE_PYTHON_INTERPRETER=/usr/bin/python3", "ANSIBLE_HOST_KEY_CHECKING=False"],
+            "extra_arguments": [ "--extra-vars", "JENKINS_VERSION={{ user `JENKINS_VERSION`}}" ]
+        }
+    ],
+
+    "post-processors": [
+        [
+        {
+            "type": "docker-tag",
+            "repository": "wolfman.crabdance.com/jenkins-arm",
+            "tag": "latest"
+        },
+
+        {
+            "type": "docker-push",
+            "login": false
+        }
+    ]
+]
+
+
+
+}
