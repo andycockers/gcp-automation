@@ -1,5 +1,5 @@
 - name: Download and untar Helm to /usr/local/bin
   unarchive:
-    src: https://get.helm.sh/helm-v3.5.0-linux-arm64.tar.gz
+    src: https://get.helm.sh/helm-v3.5.0-linux-arm.tar.gz
     dest: /usr/local/bin
     remote_src: yes
