@@ -9,7 +9,7 @@
     - role: install-packer-arm
     - role: install-helm-arm
     - role: install-pip3-apt
-    - role: install-ansible
+    - role: install-ansible-apt-arm7
     - role: install-python-is-python3
     - role: install-wget
     - role: install-curl

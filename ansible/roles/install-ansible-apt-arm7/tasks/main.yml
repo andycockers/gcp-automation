@@ -1,0 +1,11 @@
+- name: Install dependencies for arm7
+  package:
+    name:
+      - build-essential
+      - libssl-dev
+      - libffi-dev
+
+# Install ansible using pip3
+- pip:
+    name: ansible
+    executable: pip3
