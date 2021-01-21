@@ -67,8 +67,8 @@
     dest: /usr/local/bin/jenkins.sh
     mode: 0777
 
-- name: Copy tini-shim.sh to /bin/tini
-  copy: 
-    src: tini-shim.sh
-    dest: /sbin/tini
-    mode: 0777
+#- name: Copy tini-shim.sh to /bin/tini
+#  copy: 
+#    src: tini-shim.sh
+#    dest: /sbin/tini
+#    mode: 0777
