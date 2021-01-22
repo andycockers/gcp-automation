@@ -11,3 +11,5 @@ rc-status
 touch /run/openrc/softlevel
 
 /etc/init.d/sshd start || true
+
+sleep 30
