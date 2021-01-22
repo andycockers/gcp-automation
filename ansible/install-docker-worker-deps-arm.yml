@@ -1,16 +1,10 @@
 ---
 - hosts: all
   roles:
-    - role: apt-update
     - role: install-git
-    - role: install-java
-    - role: install-unzip
     - role: install-terraform-arm
     - role: install-packer-arm
     - role: install-helm-arm
-    - role: install-pip3-apt
-    - role: install-ansible-apt-arm7
-    - role: install-python-is-python3
-    - role: install-wget
+    - role: install-ansible-apk
     - role: install-curl
     - role: install-jq
