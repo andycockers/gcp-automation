@@ -4,4 +4,4 @@
     - role: install-unzip
     - role: install-java
     - role: install-terraform-arm
-    - role: install-golang
+    - role: install-golang-arm

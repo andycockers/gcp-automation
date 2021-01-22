@@ -1,5 +1,5 @@
 - name: Download and untar Golang to /usr/local/bin
   unarchive:
-    src: https://golang.org/dl/go1.15.7.linux-arm64.tar.gz
+    src: https://golang.org/dl/go1.15.7.linux-armv6l.tar.gz
     dest: /usr/local/bin
     remote_src: yes
