@@ -2,7 +2,7 @@
     "builders": [
         {
             "type": "docker",
-            "image": "alpine",
+            "image": "danielguerra/alpine-sshd",
             "commit": true,
             "run_command": ["-d", "-i", "-t", "{{.Image}}", "/bin/sh"]
         }
@@ -13,12 +13,7 @@
             "type": "shell",
             "scripts": "../../shell/apk/install-python3/install.sh"
         },
-
-        {
-            "type": "shell",
-            "scripts": "../../shell/apk/install-sshd/install.sh"
-        },
-
+        
         {
             "type": "ansible",
             "playbook_file": "../../ansible/install-docker-worker-deps-arm.yml",
