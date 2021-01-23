@@ -1,8 +1,9 @@
 {
 
     "variables": {
-        "ansible_host": "root",
-        "ansible_connection": "docker"
+        "ansible_host": "default",
+        "ansible_connection": "docker",
+        "user": "root"
       },
 
     "builders": [
@@ -33,7 +34,7 @@
             "playbook_file": "../../ansible/install-docker-worker-deps-arm.yml",
             "extra_arguments": [
                 "--extra-vars",
-                "ansible_host={{user `ansible_host`}} ansible_connection={{user `ansible_connection`}}"
+                "ansible_host={{user `user`}} ansible_connection={{user `ansible_connection`}}"
               ]
         }
     ],
