@@ -2,6 +2,7 @@
 - hosts: all
   roles:
     - role: install-git
+    - role: unstall-zip
     - role: install-terraform-arm
     - role: install-packer-arm
     - role: install-helm-arm

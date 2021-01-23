@@ -1,5 +1,12 @@
-- name: Download and untar Helm to /usr/local/bin
-  unarchive:
+- name: Download heml tar to /tmp 
+  ansible.builtin.copy:
     src: https://get.helm.sh/helm-v3.5.0-linux-arm.tar.gz
-    dest: /usr/local/bin
+    dest: /tmp/helm-v3.5.0-linux-arm.tar.gz
     remote_src: yes
+    mode: '0777'
+
+- name: Untar Helm to /usr/local/bin
+  unarchive:
+    src: /tmp/helm-v3.5.0-linux-arm.tar.gz
+    dest: /usr/local/bin
+    remote_src: no
