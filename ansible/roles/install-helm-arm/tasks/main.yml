@@ -4,8 +4,5 @@
     dest: /tmp
     mode: '0777'
 
-- name: Untar Helm to /usr/local/bin
-  unarchive:
-    src: /tmp/helm-v3.5.0-linux-arm.tar.gz
-    dest: /usr/local/bin
-    remote_src: no
+- name: Un tar helm to /usr/local/bin
+  shell: "cd /tmp && tar xvf helm-v3.5.0-linux-arm.tar.gz -C /usr/local/bin"
