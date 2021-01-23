@@ -32,6 +32,11 @@
             "type": "docker-tag",
             "repository": "wolfman.crabdance.com/worker-arm-alpine",
             "tag": "latest"
+        },
+
+        {
+            "type": "docker-push",
+            "login": false
         }
 
         
