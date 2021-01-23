@@ -1,26 +1,11 @@
 {
-
-    "variables": {
-        "ansible_host": "default",
-        "ansible_connection": "docker",
-        "user": "root"
-      },
-
     "builders": [
         {
             "type": "docker",
             "image": "alpine",
-            "commit": true,
-            "run_command": [
-        "-d",
-        "-i",
-        "-t",
-        "--name",
-        "{{user `user`}}",
-        "{{.Image}}",
-        "/bin/sh"
-      ]
-    }
+            "commit": false,
+            "run_command": ["-d", "-i", "-t", "{{.Image}}", "/bin/sh"]
+        }
   ],
 
     "provisioners": [
@@ -30,13 +15,10 @@
         },
         
         {
-            "type": "ansible",
-            "playbook_file": "../../ansible/install-docker-worker-deps-arm.yml",
-            "extra_arguments": [
-                "--extra-vars",
-                "ansible_host={{user `user`}} ansible_connection={{user `ansible_connection`}}"
-              ]
-        }
+            "type": "file",
+            "source": "../../ansible",
+            "destination": "/tmp"
+          }
     ],
 
     "post-processors": [
