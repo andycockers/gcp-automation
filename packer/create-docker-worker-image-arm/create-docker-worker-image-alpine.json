@@ -22,7 +22,7 @@
 
           {
             "type": "shell",
-            "inline": "cd /tmp/ansible && ansible-playbook install-docker-worker-deps-arm.yml"
+            "inline": "cd /tmp/ansible && ansible-playbook install-docker-worker-deps-arm-local.yml"
         }
     ],
 

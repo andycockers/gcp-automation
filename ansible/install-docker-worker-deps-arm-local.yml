@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  roles:
+    - role: install-git
+    - role: install-terraform-arm
+    - role: install-packer-arm
+    - role: install-helm-arm
+    - role: install-curl
+    - role: install-jq
