@@ -1,3 +1,1 @@
-apk update
-
-apk add ansible
+apk add --no-cache ansible
