@@ -6,6 +6,5 @@
     - role: install-terraform-arm
     - role: install-packer-arm
     - role: install-helm-arm
-    - role: install-ansible-apk
     - role: install-curl
     - role: install-jq
