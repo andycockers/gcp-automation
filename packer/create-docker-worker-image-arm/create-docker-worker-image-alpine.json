@@ -11,14 +11,19 @@
     "provisioners": [
         {
             "type": "shell",
-            "scripts": "../../shell/apk/install-python3/install.sh"
+            "scripts": "../../shell/apk/install-ansible/install.sh"
         },
         
         {
             "type": "file",
             "source": "../../ansible",
             "destination": "/tmp"
-          }
+          },
+
+          {
+            "type": "shell",
+            "inline": "cd /tmp/ansible && ansible-playbook install-docker-worker-deps-arm.yml"
+        }
     ],
 
     "post-processors": [
