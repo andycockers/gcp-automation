@@ -5,4 +5,4 @@
     mode: '0777'
 
 - name: Un tar helm to /usr/local/bin
-  shell: "cd /tmp && tar xvf helm-v3.5.0-linux-arm.tar.gz -C /usr/local/bin" --strip-components 2
+  shell: "cd /tmp && tar xvf helm-v3.5.0-linux-arm.tar.gz -C /usr/local/bin  --strip-components 2"
