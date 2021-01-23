@@ -27,7 +27,7 @@
 
         {
             "type": "shell",
-            "inline": "rm -rf /tmp/ansible && apt-get clean"
+            "inline": "rm -rf /tmp/ansible && apt-get remove ansible -y && apt-get autoremove -y && apt-get clean"
         }
     ],
 
