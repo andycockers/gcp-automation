@@ -1,7 +1,7 @@
 {
 
     "variables": {
-        "ansible_host": "default",
+        "ansible_host": "root",
         "ansible_connection": "docker"
       },
 
