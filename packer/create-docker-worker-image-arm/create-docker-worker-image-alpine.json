@@ -16,7 +16,7 @@
         "-i",
         "-t",
         "--name",
-        "{{user `ansible_host`}}",
+        "{{user `user`}}",
         "{{.Image}}",
         "/bin/sh"
       ]
