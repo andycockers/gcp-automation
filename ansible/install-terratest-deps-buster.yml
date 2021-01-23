@@ -1,0 +1,7 @@
+---
+- hosts: all
+  roles:
+    - role: imstall-zip
+    - role: install-unzip
+    - role: install-terraform-arm
+    - role: install-golang-arm
