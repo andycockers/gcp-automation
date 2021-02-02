@@ -25,7 +25,7 @@
         [
         {
             "type": "docker-tag",
-            "repository": "wolfman.crabdance.com/worker-arm",
+            "repository": "wolfman.crabdance.com/worker-arm-ubuntu",
             "tag": "latest"
         },
 
