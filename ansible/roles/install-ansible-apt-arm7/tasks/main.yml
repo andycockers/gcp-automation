@@ -7,5 +7,7 @@
 
 # Install ansible using pip3
 - pip:
-    name: ansible
+    name:
+      - cffi
+      - ansible
     executable: pip3

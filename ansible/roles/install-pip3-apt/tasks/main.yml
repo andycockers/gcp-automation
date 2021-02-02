@@ -4,3 +4,5 @@
       - python3-pip
       - libssl-dev
       - libffi-dev
+      - build-essential
+      - python3-dev
