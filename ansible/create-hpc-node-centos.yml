@@ -18,3 +18,5 @@
   - role: add-user
   - role: copy-ssh-keypair
   - role: install-openmpi-centos
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
