@@ -6,7 +6,10 @@
   package:
     name: openmpi-devel
 
-- name: add /usr/lib64/openmpi/bin to /etc/profile
+- name: add /usr/lib64/openmpi/bin to /home/hpc/.bashrc
   lineinfile:
-    path: /etc/profile
+    path: /home/hpc/.bashrc
     line: export PATH=/usr/lib64/openmpi/bin:$PATH
+    owner: hpc
+    group: hpc
+    mode: 0744
