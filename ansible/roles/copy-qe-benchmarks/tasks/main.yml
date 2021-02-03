@@ -1,7 +1,7 @@
 - name: Git checkout QE benchmarks to /mnt/share
   git:
     repo: 'https://github.com/QEF/benchmarks.git'
-    dest: /mnt/share
+    dest: /mnt/share/benchmarks
 
 - name: Copy para-speedup.sh to /mnt/share/benchmarks/small-benchmarks
   copy:
