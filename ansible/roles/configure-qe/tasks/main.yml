@@ -13,20 +13,3 @@
   shell: make pw
   args:
     chdir: /mnt/share/qe-6.7
-
-- name: Git checkout QE benchmarks to /mnt/share
-  git:
-    repo: 'https://github.com/QEF/benchmarks.git'
-    dest: /mnt/share
-
-- name: Copy para-speedup.sh to /mnt/share/benchmarks/small-benchmarks
-  copy:
-    src: para-speedup.sh
-    dest: /mnt/share/benchmarks/small-benchmarks
-    mode: 0777
-
-- name: Copy pwscf_bench.sh to /mnt/share/benchmarks/small-benchmarks
-  copy:
-    src: pwscf_bench.sh
-    dest: /mnt/share/benchmarks/small-benchmarks
-    mode: 0777
