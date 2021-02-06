@@ -6,7 +6,7 @@
     group: root
     mode: '0777'
 
-#This is a third party module, and can be installed using: ansible-galaxy collection install ansible.posix
+#This is a third party module
 - name: Mount an NFS volume
   ansible.posix.mount:
     src: "{{MANAGER_IP}}"
