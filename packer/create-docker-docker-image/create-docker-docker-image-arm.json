@@ -1,4 +1,9 @@
 {
+    "variables": {
+      "password": "{{env `PASSWORD`}}"
+    },
+
+
     "builders": [
         {
             "type": "docker",
@@ -25,13 +30,15 @@
         [
         {
             "type": "docker-tag",
-            "repository": "wolfman.crabdance.com/docker-docker-arm",
+            "repository": "calmmopey/docker-docker-arm",
             "tag": "latest"
         },
 
         {
             "type": "docker-push",
-            "login": false
+            "login": true,
+            "login_username": "calmmopey",
+            "login_password": "{{ user `password` }}"
         }
     ]
 ]
