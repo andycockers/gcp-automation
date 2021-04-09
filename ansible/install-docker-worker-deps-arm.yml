@@ -6,7 +6,6 @@
     - role: install-unzip
     - role: install-pip3-apt
     - role: install-ansible-apt-arm7
-    - role: install-python-is-python3
     - role: install-terraform-arm
     - role: install-packer-arm
     - role: install-helm-arm
