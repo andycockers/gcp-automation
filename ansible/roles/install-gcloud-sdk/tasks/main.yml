@@ -1,0 +1,26 @@
+- name: Add gcloud SDK repository into sources list
+  ansible.builtin.apt_repository:
+    repo: deb https://packages.cloud.google.com/apt cloud-sdk main
+    state: present
+
+- name: Add the Apt signing key for gcloud SDK
+  ansible.builtin.apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+
+- name: Run apt update
+  apt:
+    update_cache: yes
+
+- name: Install dependencies
+  package:
+    name:
+      - curl
+      - apt-transport-https
+      - ca-certificates
+      - gnupg
+
+- name: Install the gcloud SDK
+  package:
+    name:
+      - google-cloud-sdk
