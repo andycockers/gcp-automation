@@ -13,6 +13,6 @@ echo 'PATH=${HOME}/.tgenv/bin:${PATH}' >> ~/.bashrc && \
 git clone https://github.com/iamhsa/pkenv.git ~/.pkenv && \
 echo 'PATH=${HOME}/.pkenv/bin:${PATH}' >> ~/.bashrc && \
 apt-get clean && \
-pip install ansible
+pip install --no-cache-dir ansible
 
 WORKDIR /root
