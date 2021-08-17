@@ -5,18 +5,19 @@ ENV PKENV_ARCH=arm
 RUN apk update && \ 
 	apk add --no-cache \ 
 		ca-certificates=20191127-r5 \ 
-		bash \
 		git \
 		curl \
+		bash \
+		gcc \
 		&& \
 	git clone https://github.com/tfutils/tfenv.git ~/.tfenv && \
 	echo 'PATH=${HOME}/.tfenv/bin:${PATH}' >> ~/.bashrc && \
-    git clone https://github.com/cunymatthieu/tgenv.git ~/.tgenv && \
-	echo 'PATH=${HOME}/.tgenv/bin:${PATH}' >> ~/.bashrc && \
-    git clone https://github.com/iamhsa/pkenv.git ~/.pkenv && \
-	echo 'PATH=${HOME}/.pkenv/bin:${PATH}' >> ~/.bashrc && \
+    git clone https://github.com/cunymatthieu/tgenv.git && \
+    git clone https://github.com/iamhsa/pkenv.git && \
 	
 	rm -rf /var/cache/apk/*
+
+#ENV PATH=/tfenv/bin:/go/tgenv/bin:/go/pkenv/bin:$PATH
 
 WORKDIR /root
 

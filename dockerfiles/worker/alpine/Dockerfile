@@ -10,6 +10,7 @@ RUN apk update && \
 		curl \
         jq \
         ansible \
+		wget \
 		&& \
 	git clone https://github.com/tfutils/tfenv.git ~/.tfenv && \
 	echo 'PATH=${HOME}/.tfenv/bin:${PATH}' >> ~/.bashrc && \
@@ -18,8 +19,14 @@ RUN apk update && \
     git clone https://github.com/iamhsa/pkenv.git ~/.pkenv && \
 	echo 'PATH=${HOME}/.pkenv/bin:${PATH}' >> ~/.bashrc && \
 	
-	rm -rf /var/cache/apk/*
+	rm -rf /var/cache/apk/* && \
+	wget https://golang.org/dl/go1.16.7.linux-arm64.tar.gz && \
+	tar xvf go1.16.7.linux-arm64.tar.gz && \
+	rm go1.16.7.linux-arm64.tar.gz
+
+
+#ENV PATH=/root/.pkenv/bin:/root/.tfenv/bin:/root/.tgenv/bin:$PATH
 
 WORKDIR /root
 
-ENTRYPOINT [ "/bin/bash" ]
+#ENTRYPOINT [ "/bin/bash" ]
