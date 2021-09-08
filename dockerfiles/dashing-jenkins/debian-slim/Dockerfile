@@ -1,4 +1,4 @@
-FROM ruby:buster-slim
+FROM ruby:slim-buster
 
 WORKDIR /
 
