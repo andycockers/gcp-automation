@@ -1,4 +1,4 @@
-FROM calmmopey/worker-python-slim
+FROM python:slim-buster
 
 ARG GITHUB_RUNNER_VERSION="2.283.1"
 
@@ -14,11 +14,15 @@ RUN apt-get update \
         sudo \
         git \
         jq \
+        docker.io \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && useradd -m github \
     && usermod -aG sudo github \
-    && echo "%sudo ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+    && echo "%sudo ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
+    && pip install --no-cache-dir ansible \
+    && git clone https://github.com/iamhsa/pkenv.git /pkenv \
+    && chmod 777 /pkenv
 
 USER github
 WORKDIR /home/github
@@ -30,3 +34,5 @@ COPY --chown=github:github entrypoint.sh ./entrypoint.sh
 RUN sudo chmod u+x ./entrypoint.sh
 
 ENTRYPOINT ["/home/github/entrypoint.sh"]
+
+ENV PATH=/tfenv/bin:$PATH
