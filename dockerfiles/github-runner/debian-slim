@@ -25,7 +25,8 @@ RUN apt-get update \
     && wget https://golang.org/dl/go1.16.7.linux-arm64.tar.gz \
     && tar xvf go1.16.7.linux-arm64.tar.gz \
     && rm go1.16.7.linux-arm64.tar.gz \
-    && git clone https://github.com/tfutils/tfenv.git /tfenv
+    && git clone https://github.com/tfutils/tfenv.git /tfenv \
+    && chmod 777 /tfenv
 
 USER github
 WORKDIR /home/github
