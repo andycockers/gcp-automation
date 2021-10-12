@@ -18,23 +18,26 @@ RUN apt-get update \
         docker.io \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
-    && useradd -m github \
+    #&& useradd -m github \
     && usermod -aG sudo github \
     && echo "%sudo ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
     && pip install --no-cache-dir ansible \
     && git clone https://github.com/iamhsa/pkenv.git /pkenv \
     && chmod 777 /pkenv \
-    && usermod -aG docker github \
-    && newgrp docker \
-    && systemctl enable docker
+    #&& usermod -aG docker github \
+    #&& newgrp docker \
+    && systemctl enable docker \
+    && systemctl start docker
 
-USER github
+#USER github
 WORKDIR /home/github
 
 RUN curl -Ls https://github.com/actions/runner/releases/download/v${GITHUB_RUNNER_VERSION}/actions-runner-linux-arm64-${GITHUB_RUNNER_VERSION}.tar.gz | tar xz \
     && sudo ./bin/installdependencies.sh
 
-COPY --chown=github:github entrypoint.sh ./entrypoint.sh
+#COPY --chown=github:github entrypoint.sh ./entrypoint.sh
+COPY entrypoint.sh ./entrypoint.sh
+
 RUN sudo chmod u+x ./entrypoint.sh
 
 ENTRYPOINT ["/home/github/entrypoint.sh"]
