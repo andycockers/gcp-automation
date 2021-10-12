@@ -25,6 +25,7 @@ RUN apt-get update \
     && git clone https://github.com/iamhsa/pkenv.git /pkenv \
     && chmod 777 /pkenv \
     && usermod -aG docker github \
+    && newgrp docker \
     && systemctl enable docker
 
 USER github
