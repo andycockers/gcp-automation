@@ -23,7 +23,9 @@ RUN apt-get update \
     && echo "%sudo ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers \
     && pip install --no-cache-dir ansible \
     && git clone https://github.com/iamhsa/pkenv.git /pkenv \
-    && chmod 777 /pkenv
+    && chmod 777 /pkenv \
+    && groupadd docker \
+    && usermod -aG docker github
 
 USER github
 WORKDIR /home/github
