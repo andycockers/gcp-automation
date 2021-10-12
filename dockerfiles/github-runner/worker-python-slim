@@ -26,7 +26,7 @@ RUN apt-get update \
     && chmod 777 /pkenv \
     #&& usermod -aG docker github \
     #&& newgrp docker \
-    && service docker enable \
+    #&& service docker enable \
     && service docker start
 
 #USER github
