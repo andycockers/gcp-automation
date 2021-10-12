@@ -24,7 +24,8 @@ RUN apt-get update \
     && pip install --no-cache-dir ansible \
     && git clone https://github.com/iamhsa/pkenv.git /pkenv \
     && chmod 777 /pkenv \
-    && usermod -aG docker github
+    && usermod -aG docker github \
+    && systemctl enable docker
 
 USER github
 WORKDIR /home/github
