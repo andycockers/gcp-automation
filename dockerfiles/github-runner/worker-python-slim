@@ -38,4 +38,4 @@ RUN sudo chmod u+x ./entrypoint.sh
 
 ENTRYPOINT ["/home/github/entrypoint.sh"]
 
-ENV PATH=/tfenv/bin:$PATH
+ENV PATH=/pkenv/bin:$PATH
