@@ -26,8 +26,8 @@ RUN apt-get update \
     && chmod 777 /pkenv \
     #&& usermod -aG docker github \
     #&& newgrp docker \
-    && systemctl enable docker \
-    && systemctl start docker
+    && service docker enable \
+    && service docker start
 
 #USER github
 WORKDIR /home/github
