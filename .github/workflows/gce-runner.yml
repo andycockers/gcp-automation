@@ -18,7 +18,7 @@ jobs:
       label: ${{ steps.create-runner.outputs.label }}
     steps:
       - id: create-runner
-        uses: related-sciences/gce-github-runner@v0.3
+        uses: andycockers/gce-github-runner@v0.5
         with:
           token: ${{ secrets.GH_SA_TOKEN }}
           project_id: ${{ secrets.GCP_PROJECT_ID }}
@@ -27,13 +27,15 @@ jobs:
           image_family: ubuntu-2004-lts
           machine_type: e2-micro
           machine_zone: us-central1-a
+          shutdown_timeout: 60
+
 
   test:
     needs: create-runner
     runs-on: ${{ needs.create-runner.outputs.label }}
     steps:
       - run: echo "This runs on the GCE VM"
-      - uses: related-sciences/gce-github-runner@v0.3
+      - uses: andycockers/gce-github-runner@v0.5
         with:
           command: stop
         if: always()
