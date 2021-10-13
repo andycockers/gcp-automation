@@ -25,8 +25,8 @@ jobs:
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           image_project: ubuntu-os-cloud
           image_family: ubuntu-2004-lts
-          machine-type: e2-micro
-          machine-zone: us-central1-a
+          machine_type: e2-micro
+          machine_zone: us-central1-a
 
   test:
     needs: create-runner
