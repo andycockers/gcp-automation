@@ -1,0 +1,37 @@
+name: gce-runner
+
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    paths:
+      - 'dockerfiles/github-runner/worker-python-slim'
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  create-runner:
+    runs-on: ubuntu-latest
+    outputs:
+      label: ${{ steps.create-runner.outputs.label }}
+    steps:
+      - id: create-runner
+        uses: related-sciences/gce-github-runner@v0.3
+        with:
+          token: ${{ secrets.GH_SA_TOKEN }}
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          image_project: ubuntu-os-cloud
+          image_family: ubuntu-1604-lts
+
+  test:
+    needs: create-runner
+    runs-on: ${{ needs.create-runner.outputs.label }}
+    steps:
+      - run: echo "This runs on the GCE VM"
+      - uses: related-sciences/gce-github-runner@v0.3
+        with:
+          command: stop
+        if: always()
