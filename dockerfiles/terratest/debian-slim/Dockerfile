@@ -1,16 +1,23 @@
-FROM debian:buster-slim
+# docker buildx build --platform linux/amd64,linux/arm64 --progress=plain --push -t calmmopey/terratest .
 
-ENV TFENV_ARCH=arm
+FROM golang:1.16.12-stretch AS base
+RUN echo "This stage is used on all architectures"
+RUN apt-get update && apt-get install zip unzip -y \
+    && apt-get autoclean \
+	&& apt-get autoremove
 
-RUN apt-get update && apt-get upgrade && \
-apt-get install wget curl unzip git gcc -y && \
-git clone https://github.com/tfutils/tfenv.git ~/.tfenv && \
-#echo 'PATH=${HOME}/.tfenv/bin:${PATH}' >> ~/.bashrc && \
-wget https://golang.org/dl/go1.16.7.linux-arm64.tar.gz && \
-tar xvf go1.16.7.linux-arm64.tar.gz && \
-rm go1.16.7.linux-arm64.tar.gz && \
-apt-get clean
+# arm64-specific stage
+FROM base AS build-arm64
+RUN echo "This stage is used on arm64"
+RUN	wget https://releases.hashicorp.com/terraform/1.1.1/terraform_1.1.1_linux_arm64.zip \
+    && unzip terraform_1.1.1_linux_arm64.zip \
+    && cp terraform /usr/local/bin \
+    && rm terraform_1.1.1_linux_arm64.zip
 
-WORKDIR /root
-
-ENV PATH=/go/bin:/root/.tfenv/bin:$PATH
+# amd64-specific stage
+FROM base AS build-amd64
+RUN echo "This stage is used on amd64 (x86)"
+RUN wget https://releases.hashicorp.com/terraform/1.1.1/terraform_1.1.1_linux_amd64.zip \
+    && unzip terraform_1.1.1_linux_amd64.zip \
+    && cp terraform /usr/local/bin \
+    && rm terraform_1.1.1_linux_amd64.zip
