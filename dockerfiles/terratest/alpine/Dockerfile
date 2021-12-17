@@ -1,24 +1,23 @@
-FROM golang:rc-alpine
-ENV TFENV_ARCH=arm
-ENV TGENV_ARCH=arm64
-ENV PKENV_ARCH=arm
-RUN apk update && \ 
-	apk add --no-cache \ 
-		ca-certificates=20191127-r5 \ 
-		git \
-		curl \
-		bash \
-		gcc \
-		&& \
-	git clone https://github.com/tfutils/tfenv.git ~/.tfenv && \
-	echo 'PATH=${HOME}/.tfenv/bin:${PATH}' >> ~/.bashrc && \
-    git clone https://github.com/cunymatthieu/tgenv.git && \
-    git clone https://github.com/iamhsa/pkenv.git && \
-	
-	rm -rf /var/cache/apk/*
+# docker buildx build --platform linux/amd64,linux/arm --push -t calmmopey/terratest
 
-#ENV PATH=/tfenv/bin:/go/tgenv/bin:/go/pkenv/bin:$PATH
+FROM golang:1.16.12-alpine3.15 AS base
 
-WORKDIR /root
+# arm64-specific stage
+FROM base AS build-arm
+RUN echo "This stage is used on arm"
+RUN wget https://releases.hashicorp.com/terraform/1.1.1/terraform_1.1.1_linux_arm.zip \
+    && unzip terraform_1.1.1_linux_arm.zip \
+    && cp terraform /usr/local/bin \
+    && rm terraform_1.1.1_linux_arm.zip
 
-ENTRYPOINT [ "/bin/bash" ]
+# amd64-specific stage
+FROM base AS build-amd64
+RUN echo "This stage is used on amd64 (x86)"
+RUN wget https://releases.hashicorp.com/terraform/1.1.1/terraform_1.1.1_linux_amd64.zip \
+    && unzip terraform_1.1.1_linux_amd64.zip \
+    && cp terraform /usr/local/bin \
+    && rm terraform_1.1.1_linux_amd64.zip
+
+# common steps
+FROM build-${TARGETARCH} AS build
+RUN echo "This stage is used on all architectures"
