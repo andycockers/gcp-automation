@@ -1,3 +1,5 @@
+# docker buildx build --platform linux/amd64,linux/arm64 --progress=plain --push -t calmmopey/xmltv .
+
 FROM perl:latest
 
 RUN apt-get update && apt-get upgrade -y \
