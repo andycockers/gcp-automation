@@ -9,3 +9,5 @@ RUN apt-get update \
     && (crontab -l ; echo "*/10 * * * * tv_grab_uk_tvguide --output /opt/freesat.xml") | crontab -
 
 CMD ["bash","entrypoint.sh"]
+
+ENTRYPOINT ["tail", "-f", "/dev/null"]
