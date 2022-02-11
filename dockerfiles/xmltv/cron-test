@@ -5,6 +5,6 @@ RUN apt-get update \
     && apt-get autoclean \
     && apt-get autoremove \
     && touch /var/log/cron-1.log \
-    && (crontab -l ; echo "*/10 * * * * tv_grab_uk_tvguide --output /opt/freesat.xml >> /var/log/cron-1.log 2>&1") | crontab
+    && (crontab -l ; echo "*/10 * * * * tv_grab_uk_tvguide --output /opt/freesat.xml") | crontab
 
 CMD ["bash","entrypoint.sh"]
