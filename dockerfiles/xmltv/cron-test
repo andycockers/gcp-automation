@@ -1,0 +1,10 @@
+FROM calmmopey/xmltv:arm64
+
+RUN apt-get update \
+    && apt-get -y install cron \
+    && apt-get autoclean \
+    && apt-get autoremove \
+    && touch /var/log/cron-1.log \
+    && (crontab -l ; echo "* * * * * echo testing cron.... >> /var/log/cron-1.log 2>&1") | crontab
+
+CMD ["bash","entrypoint.sh"]
