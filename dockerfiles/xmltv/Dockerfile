@@ -18,5 +18,5 @@ RUN apt-get update && apt-get upgrade -y \
     #&& make install \
     && cd ~ \
     #&& rm -rf xmltv-1.1.0 \
-    && mkdir -p ~/.xmltv/cache \
-    && COPY tv_grab_uk_tvguide.conf ~/.xmltv/tv_grab_uk_tvguide.conf
+    && mkdir -p /root/.xmltv/cache \
+    && COPY tv_grab_uk_tvguide.conf /root/.xmltv/tv_grab_uk_tvguide.conf
