@@ -8,6 +8,6 @@ RUN apt-get update \
     && (crontab -l ; echo "PATH=/usr/local/bin:$PATH") | crontab - \
     && (crontab -l ; echo "*/10 * * * * tv_grab_uk_tvguide --output /opt/freesat.xml") | crontab -
 
-CMD ["bash","entrypoint.sh"]
+COPY entrypoint.sh /usr/local/bin
 
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+ENTRYPOINT ["entrypoint.sh"]
