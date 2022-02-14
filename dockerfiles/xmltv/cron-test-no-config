@@ -1,0 +1,13 @@
+FROM calmmopey/xmltv-no-config:arm64
+
+RUN apt-get update \
+    && apt-get -y install cron \
+    && apt-get autoclean \
+    && apt-get autoremove \
+    && touch /var/log/cron-1.log \
+    && (crontab -l ; echo "PATH=/usr/local/bin:$PATH") | crontab - \
+    && (crontab -l ; echo "*/10 * * * * tv_grab_uk_tvguide --output /opt/output.xml") | crontab -
+
+COPY entrypoint.sh /usr/local/bin
+
+ENTRYPOINT ["entrypoint.sh"]
