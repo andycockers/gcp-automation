@@ -18,7 +18,27 @@ EOF
 
 apt-get update
 apt-get install -y kubelet kubeadm kubectl
+
+Change the Kubernetes cgroup-driver to ‘cgroupfs’ if necessary by typing:
+
+cat > /etc/docker/daemon.json <<EOF
+{
+"exec-opts": ["native.cgroupdriver=systemd"],
+"log-driver": "json-file",
+"log-opts": {
+"max-size": "100m"
+},
+"storage-driver": "overlay2"
+}
+EOF
+
+Reload the systemd system and restart the kubelet service.
+
 kubeadm init --pod-network-cidr=10.244.0.0/16
+
+or
+
+kubeadm init --pod-network-cidr=172.16.0.0/16
 
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 
