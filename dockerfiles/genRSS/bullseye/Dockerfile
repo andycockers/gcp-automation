@@ -2,7 +2,7 @@ FROM python:latest
 RUN mkdir -p /var/www
 WORKDIR /var/www
 RUN apt update &&\
-    apt install inotify-tools &&\
+    apt install inotify-tools -y &&\
     cd /var/www &&\
     wget https://raw.githubusercontent.com/amsehili/genRSS/master/genRSS.py
 COPY inotify.sh /usr/bin
