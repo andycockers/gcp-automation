@@ -5,4 +5,5 @@ RUN apt update &&\
     apt install inotify-tools -y &&\
     wget https://raw.githubusercontent.com/amsehili/genRSS/master/genRSS.py -P /usr/bin
 COPY inotify.sh /usr/bin
+COPY cleanup.py /usr/bin
 CMD inotify.sh
