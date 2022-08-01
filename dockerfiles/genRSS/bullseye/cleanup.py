@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 
-import os, time, shutil
+import os, time, shutil, sys
 
 days_ago = time.time() - (30 * 86400)
-root = "radio"
+root = sys.argv[1]
 
 for i in os.listdir(root):
     path = os.path.join(root, i)
