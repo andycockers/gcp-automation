@@ -1,0 +1,19 @@
+---
+- hosts: all
+  become: true
+  roles:
+    - role: edit-iptables
+    - role: apt-update
+    - role: apt-upgrade
+    - role: install-docker-io
+    - role: systemd-enable-docker
+    - role: add-user-to-group
+    - role: add-google-apt-key
+    - role: apt-update
+    - role: apt-install-kube
+    - role: copy-cgroup-driver
+    - role: reboot
+    - role: kubeadm-init
+  vars:
+    - user: ubuntu
+    - group: docker

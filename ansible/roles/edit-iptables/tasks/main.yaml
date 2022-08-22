@@ -1,0 +1,27 @@
+- name: Save existing rules
+  shell: iptables-save > iptables-rules
+  args:
+    chdir: /tmp
+
+- name: Remove drop lines
+  shell: grep -v "DROP" iptables-rules > tmpfile && mv tmpfile iptables-rules-mod
+  args:
+    chdir: /tmp
+
+- name: Remove reject lines
+  shell: grep -v "REJECT" iptables-rules-mod > tmpfile && mv tmpfile iptables-rules-mod
+  args:
+    chdir: /tmp
+
+- name: Apply the iptables changes
+  shell: iptables-restore < iptables-rules-mod
+  args:
+    chdir: /tmp
+
+- name: Save the netfliter changes
+  shell: netfilter-persistent save
+
+- name: Restart iptables
+  systemd:
+    name: iptables
+    state: reloaded

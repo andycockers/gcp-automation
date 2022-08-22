@@ -1,0 +1,4 @@
+- name: Add user to group
+  user:
+    name: "{{ user }}"
+    group: "{{ group }}"

@@ -1,0 +1,13 @@
+- name: Add Google apt key
+  ansible.builtin.apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+
+- name: Copy kubernetes.list to /etc/apt/sources.list.d/
+  copy:
+    src: kubernetes.list
+    dest: /etc/apt/sources.list.d/
+
+- name: Run apt update
+  apt:
+    update_cache: yes

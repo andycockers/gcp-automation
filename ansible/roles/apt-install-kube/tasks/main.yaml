@@ -1,0 +1,6 @@
+- name: Install kube
+  package:
+    name:
+      - kubelet
+      - kubeadm
+      - kubectl
