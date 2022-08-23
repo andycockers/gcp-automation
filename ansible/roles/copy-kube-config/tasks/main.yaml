@@ -1,0 +1,12 @@
+- name: Create /home/ubuntu/.kube folder
+  file:
+    path: /home/ubuntu/.kube
+    state: directory
+
+- name: Copy /etc/kubernetes/admin.conf to /home/ubuntu/.kube/config
+  copy:
+    src: /etc/kubernetes/admin.conf
+    dest: /home/ubuntu/.kube/config
+    owner: ubuntu
+    remote_src: yes
+  become: true

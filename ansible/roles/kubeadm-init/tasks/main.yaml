@@ -1,2 +1,2 @@
-- name: Save existing rules
+- name: Initialise kubeadm
   shell: kubeadm init --pod-network-cidr=10.244.0.0/16

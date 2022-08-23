@@ -1,0 +1,5 @@
+- name: Copy kube.sh to /etc/profile.d
+  copy:
+    src: kube.sh
+    dest: /etc/profile.d
+    mode: 644

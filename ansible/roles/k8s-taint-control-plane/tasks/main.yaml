@@ -1,0 +1,2 @@
+- name: kubectl taint control plane
+  shell: kubectl taint nodes --all node-role.kubernetes.io/control-plane-

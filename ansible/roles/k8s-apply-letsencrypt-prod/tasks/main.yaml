@@ -1,0 +1,13 @@
+- name: Wait until cert-manager is up
+  shell: kubectl wait pod --all -n cert-manager --timeout=3m --for=condition=ready --field-selector=status.phase!=Succeeded
+
+- name: Download prod-issuer manifest to /tmp.
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/andycockers/jenkins-kubernetes/main/prod-issuer.yaml
+    dest: /tmp/prod-issuer.yaml
+    mode: '0664'
+
+- name: Apply prod-issuer manifest to the cluster.
+  kubernetes.core.k8s:
+    state: present
+    src: /tmp/prod-issuer.yaml

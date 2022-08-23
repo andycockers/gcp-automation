@@ -1,0 +1,4 @@
+- name: Install pip3 kubernetes module
+  pip:
+    name: kubernetes
+    executable: pip3

@@ -5,11 +5,11 @@
     - role: edit-iptables
     - role: apt-update
     - role: apt-upgrade
+    - role: install-pip3-apt
     - role: install-docker-io
     - role: systemd-enable-docker
     - role: add-user-to-group
     - role: add-google-apt-key
-    - role: apt-update
     - role: apt-install-kube
     - role: copy-cgroup-driver
     - role: reboot
@@ -17,3 +17,14 @@
   vars:
     - user: ubuntu
     - group: docker
+
+- hosts: all
+  roles:
+    - role: pip3-install-kubernetes
+    - role: copy-kube-config
+    - role: k8s-apply-kube-flannel
+    - role: k8s-taint-master-node
+    - role: k8s-taint-control-plane
+    - role: k8s-apply-ingress-nginx
+    - role: k8s-apply-cert-manager
+    - role: k8s-apply-letsencrypt-prod

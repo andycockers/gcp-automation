@@ -1,0 +1,10 @@
+- name: Download kube-flannel manifest to /tmp.
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+    dest: /tmp/kube-flannel.yml
+    mode: '0664'
+
+- name: Apply kube-flannel manifest to the cluster.
+  kubernetes.core.k8s:
+    state: present
+    src: /tmp/kube-flannel.yml

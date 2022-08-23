@@ -1,0 +1,2 @@
+- name: kubectl taint master node
+  shell: kubectl taint nodes --all node-role.kubernetes.io/master-
