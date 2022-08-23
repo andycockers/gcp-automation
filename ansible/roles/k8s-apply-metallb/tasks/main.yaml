@@ -1,0 +1,41 @@
+- name: Download metallb-namespace manifest to /tmp.
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/metallb/metallb/v0.9.6/manifests/namespace.yaml
+    dest: /tmp/metal-lb-namespace.yaml
+    mode: '0664'
+
+- name: Apply metallb-namespace manifest to the cluster.
+  kubernetes.core.k8s:
+    state: present
+    src: /tmp/metal-lb-namespace.yaml
+
+- name: Download metallb manifest to /tmp.
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/metallb/metallb/v0.9.6/manifests/metallb.yaml
+    dest: /tmp/metallb.yaml
+    mode: '0664'
+
+- name: Apply metallb manifest to the cluster.
+  kubernetes.core.k8s:
+    state: present
+    src: /tmp/metallb.yaml
+
+- name: Apply MetalLB ip address
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: config
+        namespace: metallb-system
+      data:
+        config: |
+          address-pools:
+          - name: default
+            protocol: layer2
+            addresses:
+            - "{{ public_ip }}"/32
+
+- name: Create secret memberlist
+  shell: kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
