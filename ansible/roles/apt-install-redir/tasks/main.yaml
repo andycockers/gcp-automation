@@ -1,0 +1,4 @@
+- name: Install redir
+  package:
+    name:
+      - redir

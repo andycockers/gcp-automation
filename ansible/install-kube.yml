@@ -7,6 +7,7 @@
     - role: apt-upgrade
     - role: install-pip3-apt
     - role: install-docker-io
+    - role: apt-install-redir
     - role: systemd-enable-docker
     - role: add-user-to-group
     - role: add-google-apt-key
