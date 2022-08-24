@@ -1,0 +1,2 @@
+- name: Install helm gcs
+  shell: helm plugin install https://github.com/hayorov/helm-gcs.git

@@ -7,6 +7,7 @@
     - role: apt-upgrade
     - role: install-pip3-apt
     - role: install-docker-io
+    - role: install-helm-arm
     - role: apt-install-redir
     - role: systemd-enable-docker
     - role: add-user-to-group
@@ -24,9 +25,9 @@
     - role: pip3-install-kubernetes
     - role: copy-kube-config
     - role: k8s-apply-kube-flannel
-    #- role: k8s-taint-master-node
     - role: k8s-taint-control-plane
     - role: k8s-apply-ingress-nginx
     - role: k8s-apply-cert-manager
     - role: k8s-apply-letsencrypt-prod
     - role: redir-traffic
+    - role: helm-install-gcs
