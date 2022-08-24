@@ -24,8 +24,9 @@
     - role: pip3-install-kubernetes
     - role: copy-kube-config
     - role: k8s-apply-kube-flannel
-    - role: k8s-taint-master-node
+    #- role: k8s-taint-master-node
     - role: k8s-taint-control-plane
     - role: k8s-apply-ingress-nginx
     - role: k8s-apply-cert-manager
     - role: k8s-apply-letsencrypt-prod
+    - role: redir-traffic

@@ -1,5 +1,10 @@
+- name: Copy node.sh to /home/ubuntu
+  copy:
+    src: node.sh
+    dest: /home/ubuntu
+
 - name: Get the ports and output them to a file
-  shell: kubectl get svc -n ingress-nginx -o go-template='{{range .items}}{{range.spec.ports}}{{if .nodePort}}{{.nodePort}}{{"\n"}}{{end}}{{end}}{{end}}' > node.txt
+  shell: ./node.sh
   args:
     chdir: /home/ubuntu
 

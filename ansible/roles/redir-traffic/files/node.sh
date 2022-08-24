@@ -1,0 +1,1 @@
+kubectl get svc -n ingress-nginx -o go-template='{{range .items}}{{range.spec.ports}}{{if .nodePort}}{{.nodePort}}{{"\n"}}{{end}}{{end}}{{end}}' > node.txt
