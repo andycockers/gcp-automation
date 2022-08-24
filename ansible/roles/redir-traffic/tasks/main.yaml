@@ -1,0 +1,19 @@
+- name: Get the ports and output them to a file
+  shell: kubectl get svc -n ingress-nginx -o go-template='{{range .items}}{{range.spec.ports}}{{if .nodePort}}{{.nodePort}}{{"\n"}}{{end}}{{end}}{{end}}' > node.txt
+  args:
+    chdir: /home/ubuntu
+
+- name: redir port 80 to nodeport
+  shell: head -n1 node.txt | sed 's/\(.*\)/redir :80 127.0.1.1:\1/' > redir.sh
+  args:
+    chdir: /home/ubuntu
+
+- name: redir port 443 to nodeport
+  shell: tail -n1 node.txt | sed 's/\(.*\)/redir :443 127.0.1.1:\1/' >> redir.sh
+  args:
+    chdir: /home/ubuntu
+
+- name: Apply redir
+  shell: chmod +x redir.sh && sudo ./redir.sh
+  args:
+    chdir: /home/ubuntu
