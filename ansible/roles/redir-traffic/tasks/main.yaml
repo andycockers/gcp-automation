@@ -2,6 +2,7 @@
   copy:
     src: node.sh
     dest: /home/ubuntu
+    mode: 0777
 
 - name: Get the ports and output them to a file
   shell: ./node.sh
