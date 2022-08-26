@@ -1,0 +1,29 @@
+- name: create folder /data/arnie
+  file:
+    path: /data/arnie
+    state: directory
+    mode: '777'
+  become: true
+
+- name: Copy Arnie's config file to /data/arnie
+  copy:
+    src: arnie.toml
+    dest: /data/arnie/arnie.toml
+    decrypt: yes
+    mode: "777"
+
+- name: Create k8s namespace "arnie"
+  kubernetes.core.k8s:
+    api_version: v1
+    kind: Namespace
+    name: arnie
+    state: present
+
+- name: Create arnie secret
+  shell: kubectl create secret generic arnie-key -n arnie --from-literal=KEYBASE_PAPERKEY="{{ arnie }}"
+
+
+- name: helm install arnie
+  shell: helm install arnie cockers/arnie --version 0.0.6 --namespace arnie
+  environment:
+    GOOGLE_APPLICATION_CREDENTIALS: /home/ubuntu/norse-acrobat-203806-5bc942084b87.json

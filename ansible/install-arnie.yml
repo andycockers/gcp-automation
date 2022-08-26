@@ -1,0 +1,6 @@
+---
+- hosts: all
+  roles:
+    - role: helm-install-arnie
+  vars_files:
+    - vars/arnie.yml

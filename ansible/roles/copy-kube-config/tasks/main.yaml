@@ -8,5 +8,6 @@
     src: /etc/kubernetes/admin.conf
     dest: /home/ubuntu/.kube/config
     owner: ubuntu
+    mode: '600'
     remote_src: yes
   become: true

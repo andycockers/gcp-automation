@@ -1,2 +1,19 @@
 - name: Install helm gcs
   shell: helm plugin install https://github.com/hayorov/helm-gcs.git
+
+- name: Copy encrypted GCP service account file and decrypt it
+  copy:
+    src: norse-acrobat-203806-5bc942084b87.json
+    dest: /home/ubuntu/norse-acrobat-203806-5bc942084b87.json
+    decrypt: yes
+    mode: '600'
+
+- name: Add cockers Helm repo
+  shell: helm repo add cockers gs://helm-repo-gcs
+  environment:
+    GOOGLE_APPLICATION_CREDENTIALS: /home/ubuntu/norse-acrobat-203806-5bc942084b87.json
+
+- name: Add GOOGLE_APPLICATION_CREDENTIALS env var to /home/ubuntu/.bashrc
+  lineinfile:
+    path: /home/ubuntu/.bashrc
+    line: export GOOGLE_APPLICATION_CREDENTIALS=/home/ubuntu/norse-acrobat-203806-5bc942084b87.json
