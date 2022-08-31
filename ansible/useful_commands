@@ -58,3 +58,6 @@ SHA-256: d3892390eda022bbee648f226d5b9b2806a11016d0bdf691200855361fe185a0
 Additional packages for armhf linux if installing ansible using pip3:
 
 apt install build-essential libssl-dev libffi-dev python3-dev
+
+printf $(kubectl get secret --namespace jenkins jenkins -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode);echo
+

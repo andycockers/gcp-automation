@@ -1,0 +1,71 @@
+- name: create folder /data/jenkins
+  file:
+    path: /data/jenkins
+    state: directory
+    mode: '777'
+  become: true
+
+- name: Copy service account file to /data/jenkins
+  copy:
+    src: jenkins-test-project.json
+    dest: /data/jenkins/jenkins-test-project.json
+    decrypt: yes
+    mode: '777'
+
+- name: Create k8s namespace "jenkins"
+  kubernetes.core.k8s:
+    api_version: v1
+    kind: Namespace
+    name: jenkins
+    state: present
+
+- name: Download Jenkins PV manifest to /tmp
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/andycockers/laughing-succotash/main/helm/jenkins-pvc/jenkins-hostpath.yaml
+    dest: /tmp/jenkins-hostpath.yaml
+    mode: '0664'
+
+- name: Apply Jenkins PV manifest to the cluster.
+  kubernetes.core.k8s:
+    state: present
+    src: /tmp/jenkins-hostpath.yaml
+
+- name: Download Jenkins PVC manifest to /tmp
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/andycockers/laughing-succotash/main/helm/jenkins-pvc/jenkins-pvc.yaml
+    dest: /tmp/jenkins-pvc.yaml
+    mode: '0664'
+
+- name: Apply Jenkins PV manifest to the cluster.
+  kubernetes.core.k8s:
+    state: present
+    src: /tmp/jenkins-pvc.yaml
+
+- name: Add jenkins helm repo
+  shell: helm repo add jenkins https://charts.jenkins.io
+
+- name: copy Jenkins values file to /tmp
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/andycockers/laughing-succotash/main/helm/jenkins-arm/values1.yaml
+    dest: /tmp/values1.yml
+    mode: '0664'
+
+- name: helm install jenkins
+  shell: helm install jenkins jenkins/jenkins -f https://raw.githubusercontent.com/andycockers/laughing-succotash/main/helm/jenkins-arm/values1.yaml --namespace jenkins
+
+- name: Wait until jenkins is up
+  shell: kubectl wait pod --all -n jenkins --timeout=3m --for=condition=ready --field-selector=status.phase!=Succeeded
+
+
+- name: Download Jenkins ingress to /tmp
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/andycockers/jenkins-kubernetes/main/jenkins-nginx-ingress-v1.yaml
+    dest: /tmp/jenkins-nginx-ingress-v1.yaml
+    mode: '0664'
+
+- name: Apply Jenkins ingress manifest.
+  kubernetes.core.k8s:
+    state: present
+    src: /tmp/jenkins-nginx-ingress-v1.yaml
+    namespace: jenkins
+
