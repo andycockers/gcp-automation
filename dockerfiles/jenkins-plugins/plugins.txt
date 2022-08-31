@@ -15,7 +15,7 @@ icon-shim:3.0.0
 jackson2-api:2.13.3-285.vc03c0256d517
 javax-activation-api:1.2.0-4
 jaxb:2.3.6-1
-snakeyaml-api:84.ve43da_fb_49d0b
+snakeyaml-api:1.31-84.ve43da_fb_49d0b
 javax-mail-api:1.6.2-7
 ace-editor:1.1
 handlebars:3.0.8
