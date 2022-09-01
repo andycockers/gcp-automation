@@ -50,7 +50,6 @@ ssh-credentials:295.vced876c18eb_4
 mina-sshd-api-common:2.8.0-36.v8e25ce90d4b_1
 mina-sshd-api-core:2.8.0-36.v8e25ce90d4b_1
 trilead-api:1.67.vc3938a_35172f
-gcp-secrets-manager-credentials-provider:0.2.6
 google-login:1.6
 metrics:4.2.10-389.v93143621b_050
 pipeline-groovy-lib:612.v84da_9c54906d
@@ -63,3 +62,4 @@ git-client:3.11.2
 plain-credentials:139.ved2b_9cf7587b
 pipeline-stage-step:296.v5f6908f017a_5
 hetzner-cloud:61.v5cf24cc22f1b
+kubernetes-credentials-provider:1.196.va_55f5e31e3c2
