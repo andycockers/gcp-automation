@@ -5,13 +5,6 @@
     mode: '777'
   become: true
 
-- name: Copy service account file to /data/jenkins
-  copy:
-    src: jenkins-test-project.json
-    dest: /data/jenkins/jenkins-test-project.json
-    decrypt: yes
-    mode: '777'
-
 - name: Create k8s namespace "jenkins"
   kubernetes.core.k8s:
     api_version: v1
@@ -36,7 +29,7 @@
     dest: /tmp/jenkins-pvc.yaml
     mode: '0664'
 
-- name: Apply Jenkins PV manifest to the cluster.
+- name: Apply Jenkins PVC manifest to the cluster.
   kubernetes.core.k8s:
     state: present
     src: /tmp/jenkins-pvc.yaml
