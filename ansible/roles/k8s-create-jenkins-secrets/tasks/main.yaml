@@ -1,0 +1,108 @@
+- name: Create Hetzner API token
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: Secret
+      metadata:
+        name: hetzner
+        namespace: jenkins
+        labels:
+          "jenkins.io/credentials-type": "secretText"
+        annotations:
+          "jenkins.io/credentials-description" : "Hetzner API token"
+      type: Opaque
+      stringData:
+        text: "{{ hetzner_api }}"
+
+- name: Create Hetzner SSH key
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: Secret
+      metadata:
+        name: hetzner-ssh
+        namespace: jenkins
+        labels:
+          "jenkins.io/credentials-type": "basicSSHUserPrivateKey"
+        annotations:
+          "jenkins.io/credentials-description" : "Hetzner Cloud private key"
+      type: Opaque
+      stringData:
+        username: root
+        privateKey: |
+          "{{ hetzner_ssh }}"
+
+- name: Create GitHub SSH key
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: Secret
+      metadata:
+        name: github
+        namespace: jenkins
+        labels:
+          "jenkins.io/credentials-type": "basicSSHUserPrivateKey"
+        annotations:
+          "jenkins.io/credentials-description" : "GitHub private key"
+      type: Opaque
+      stringData:
+        username: andycockers
+        privateKey: |
+          "{{ github_ssh }}"
+
+- name: Create Ansible Vault password
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: Secret
+      metadata:
+        name: ansible-vault
+        namespace: jenkins
+        labels:
+          "jenkins.io/credentials-type": "secretText"
+        annotations:
+          "jenkins.io/credentials-description" : "Ansible Vault password"
+      type: Opaque
+      stringData:
+        text: "{{ ansible_vault }}"
+
+- name: Create AWS credentials file
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: Secret
+      metadata:
+        name: aws-andy
+        namespace: jenkins
+        labels:
+          "jenkins.io/credentials-type": "secretFile"
+        annotations:
+          "jenkins.io/credentials-description" : "AWS credentials file"
+      type: Opaque
+      stringData:
+        filename: aws-andy
+      data:
+        data: "{{ aws_andy }}"
+
+- name: Create Dockerhub password
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: Secret
+      metadata:
+        name: dockerhub
+        namespace: jenkins
+        labels:
+          "jenkins.io/credentials-type": "secretText"
+        annotations:
+          "jenkins.io/credentials-description" : "Dockerhub password"
+      type: Opaque
+      stringData:
+        text: "{{ dockerhub }}"
+        
