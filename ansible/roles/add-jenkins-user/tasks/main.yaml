@@ -1,0 +1,15 @@
+- name: add user "jenkins" with uid "1000" and home folder "/home/jenkins"
+  user:
+    name: jenkins
+    uid: 1000
+    groups: sudo,adm
+    home: /home/jenkins
+
+- name: Give user "jenkins" passwordless sudo
+  community.general.sudoers:
+    name: jenkins
+    state: present
+    user: jenkins
+    nopassword: yes
+    commands: ALL
+

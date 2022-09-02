@@ -11,5 +11,6 @@
   - role: install-wget
   - role: install-java
   - role: install-nano
+  - role: add-jenkins-user
 
 
