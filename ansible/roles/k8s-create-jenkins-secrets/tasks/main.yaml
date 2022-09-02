@@ -12,7 +12,7 @@
       apiVersion: v1
       kind: Secret
       metadata:
-        name: hetzner
+        name: hetzner-api-token
         namespace: jenkins
         labels:
           "jenkins.io/credentials-type": "secretText"
