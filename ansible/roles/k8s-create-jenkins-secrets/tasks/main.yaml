@@ -22,44 +22,6 @@
       stringData:
         text: "{{ hetzner_api }}"
 
-- name: Create Hetzner SSH key
-  kubernetes.core.k8s:
-    state: present
-    definition:
-      apiVersion: v1
-      kind: Secret
-      metadata:
-        name: hetzner-ssh
-        namespace: jenkins
-        labels:
-          "jenkins.io/credentials-type": "basicSSHUserPrivateKey"
-        annotations:
-          "jenkins.io/credentials-description" : "Hetzner Cloud private key"
-      type: Opaque
-      stringData:
-        username: root
-        privateKey: |
-          "{{ hetzner_ssh }}"
-
-- name: Create GitHub SSH key
-  kubernetes.core.k8s:
-    state: present
-    definition:
-      apiVersion: v1
-      kind: Secret
-      metadata:
-        name: github
-        namespace: jenkins
-        labels:
-          "jenkins.io/credentials-type": "basicSSHUserPrivateKey"
-        annotations:
-          "jenkins.io/credentials-description" : "GitHub private key"
-      type: Opaque
-      stringData:
-        username: andycockers
-        privateKey: |
-          "{{ github_ssh }}"
-
 - name: Create Ansible Vault password
   kubernetes.core.k8s:
     state: present
@@ -112,4 +74,30 @@
       type: Opaque
       stringData:
         text: "{{ dockerhub }}"
+
+- name: Copy hetzner-ssh manifest to /tmp
+  copy:
+    src: hetzner-ssh.yaml
+    dest: /tmp/hetzner-ssh.yaml
+    decrypt: yes
+    mode: '0664'
+
+- name: Apply hetzner-ssh secret
+  kubernetes.core.k8s:
+    state: present
+    src: /tmp/hetzner-ssh.yaml
+    namespace: jenkins
+
+- name: Copy github-ssh manifest to /tmp
+  copy:
+    src: github-ssh.yaml
+    dest: /tmp/github-ssh.yaml
+    decrypt: yes
+    mode: '0664'
+
+- name: Apply github-ssh secret
+  kubernetes.core.k8s:
+    state: present
+    src: /tmp/github-ssh.yaml
+    namespace: jenkins
         
