@@ -64,3 +64,5 @@ pipeline-stage-step:296.v5f6908f017a_5
 hetzner-cloud:61.v5cf24cc22f1b
 kubernetes-credentials-provider:1.196.va_55f5e31e3c2
 job-dsl:1.81
+next-build-number:1.8
+xml-job-to-job-dsl:0.1.13
