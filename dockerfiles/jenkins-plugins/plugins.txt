@@ -67,3 +67,4 @@ job-dsl:1.81
 next-build-number:1.8
 xml-job-to-job-dsl:0.1.13
 generic-webhook-trigger:1.84
+oracle-cloud-infrastructure-compute:1.0.16
