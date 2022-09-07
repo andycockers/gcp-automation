@@ -1,6 +1,6 @@
 # docker buildx build --platform linux/amd64,linux/arm64 --progress=plain --push -t calmmopey/worker .
 
-FROM jenkins/jenkins:2.346.3-lts AS base
+FROM jenkins/jenkins:2.361.1-lts AS base
 RUN echo "This stage is used on all architectures"
 COPY plugins.txt /usr/share/jenkins/plugins.txt
 RUN jenkins-plugin-cli -f /usr/share/jenkins/plugins.txt
