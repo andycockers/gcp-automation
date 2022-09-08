@@ -100,4 +100,16 @@
     state: present
     src: /tmp/github-ssh.yaml
     namespace: jenkins
+
+- name: Copy oracle-ssh manifest to /tmp
+  copy:
+    src: oracle-ssh.yaml
+    dest: /tmp/oracle-ssh.yaml
+    mode: '0664'
+
+- name: Apply oracle-ssh secret
+  kubernetes.core.k8s:
+    state: present
+    src: /tmp/oracle-ssh.yaml
+    namespace: jenkins
         
