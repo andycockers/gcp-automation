@@ -70,3 +70,4 @@ generic-webhook-trigger:1.84.1
 oracle-cloud-infrastructure-compute:1.0.16
 rebuild:1.34
 google-oauth-plugin:1.0.7
+google-compute-engine:4.3.12
