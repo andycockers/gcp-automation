@@ -1,11 +1,11 @@
-kubernetes:3704.va_08f0206b_95e
+kubernetes:3706.vdfb_d599579f3
 workflow-aggregator:590.v6a_d052e5a_a_b_5
-git:4.11.5
+git:4.12.1
 configuration-as-code:1512.vb_79d418d5fc8
 bouncycastle-api:2.26
 branch-api:2.1046.v0ca_37783ecc5
 caffeine-api:2.9.3-65.v6a_47d0f4d1fe
-command-launcher:84.v4a_97f2027398
+command-launcher:90.v669d7ccb_7c31
 credentials:1143.vb_e8b_b_ceee347
 credentials-binding:523.vd859a_4b_122e6
 display-url-api:2.3.6
@@ -58,7 +58,7 @@ scm-api:621.vda_a_b_055e58f7
 structs:324.va_f5d6774f3a_d
 variant:59.vf075fe829ccb
 apache-httpcomponents-client-4-api:4.5.13-138.v4e7d9a_7b_a_e61
-git-client:3.11.2
+git-client:3.12.0
 plain-credentials:139.ved2b_9cf7587b
 pipeline-stage-step:296.v5f6908f017a_5
 hetzner-cloud:61.v5cf24cc22f1b
@@ -71,3 +71,4 @@ oracle-cloud-infrastructure-compute:1.0.16
 rebuild:1.34
 google-oauth-plugin:1.0.7
 google-compute-engine:4.3.12
+script-security:1183.v774b_0b_0a_a_451
