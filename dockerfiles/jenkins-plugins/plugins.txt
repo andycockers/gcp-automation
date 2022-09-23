@@ -73,3 +73,4 @@ google-oauth-plugin:1.0.7
 google-compute-engine:4.3.12
 script-security:1183.v774b_0b_0a_a_451
 workflow-job:1236.vc3a_d1602f439
+prometheus:2.0.11
