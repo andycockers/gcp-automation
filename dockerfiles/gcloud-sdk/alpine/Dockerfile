@@ -2,7 +2,7 @@
 
 ARG VERSION=404.0.0
 
-FROM python:slim-buster AS base
+FROM python:3-alpine AS base
 RUN echo "This stage is used on all architectures"
 RUN apk add --update --no-cache curl ca-certificates bash
 
