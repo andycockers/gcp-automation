@@ -1,0 +1,11 @@
+FROM alpine:latest
+
+COPY backup.sh /usr/bin
+
+RUN apk update && \
+    apk upgrade && \
+    apk add --no-cache mariadb-client && \
+    chmod a+x /usr/bin/backup.sh && \
+    mkdir /backup
+WORKDIR /backup
+CMD backup.sh

@@ -1,0 +1,1 @@
+mysqldump -h localhost -u kodi -p$MYSQL_PASSWORD --databases MyVideos119 > MyVideos119.sql
