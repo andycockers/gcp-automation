@@ -112,4 +112,16 @@
     state: present
     src: /tmp/oracle-ssh.yaml
     namespace: jenkins
-        
+
+- name: Copy hetzner-private-key to /tmp
+  copy:
+    src: hetzner-private-key.yaml
+    dest: /tmp/hetzner-private-key.yaml
+    decrypt: yes
+    mode: '0664'
+
+- name: Apply hetzner-private-key secret
+  kubernetes.core.k8s:
+     state: present
+     src: /tmp/hetzner-private-key.yaml
+     namespace: jenkins     
