@@ -1,0 +1,17 @@
+# docker buildx build --platform linux/amd64,linux/arm64 --progress=plain --push -t calmmopey/terratest .
+
+ARG TAG
+ARG TF_VER
+
+FROM golang:${TAG}
+ARG TARGETARCH
+
+RUN apt-get update && apt-get install -y zip unzip \
+    &&  case ${TARGETARCH} in \
+            "amd64")  TF_ARCH=amd64  ;; \
+            "arm64")  TF_ARCH=arm64  ;; \
+        esac \
+    && wget https://releases.hashicorp.com/terraform/${TF_VER}/terraform_${TF_VER}_linux_${TF_ARCH}.zip \
+    && unzip terraform_${TF_VER}_linux_${TF_ARCH}.zip \
+    && cp terraform /usr/local/bin \
+    && rm terraform_${TF_VER}_linux_${TF_ARCH}.zip
