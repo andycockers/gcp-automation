@@ -1,7 +1,8 @@
 ARG TAG
-FROM --platform=linux/amd64 golang:$TAG as stage-amd64
+FROM --platform=linux/amd64 golang:${TAG} as stage-amd64
 ARG TF_VER
-RUN apt-get install zip unzip -y \
+RUN echo ${TF_VER} \
+    && apt-get install zip unzip -y \
     && apt-get autoclean \
 	&& apt-get autoremove \
     && wget https://releases.hashicorp.com/terraform/$TF_VER/terraform_$TF_VER_linux_amd64.zip \
