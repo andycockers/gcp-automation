@@ -1,4 +1,4 @@
-# docker buildx build --platform linux/amd64,linux/arm64 --progress=plain --push -t calmmopey/terratest .
+# docker buildx build --platform linux/amd64,linux/arm64/v8 --progress=plain --push -t calmmopey/terratest .
 
 ARG TAG
 ARG TF_VER
