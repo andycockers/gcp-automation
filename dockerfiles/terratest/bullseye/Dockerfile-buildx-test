@@ -9,7 +9,8 @@ RUN apt-get install zip unzip -y \
     && wget https://releases.hashicorp.com/terraform/$TF_VER/terraform_$TF_VER_linux_amd64.zip \
     && unzip terraform_$TF_VER_linux_amd64.zip \
     && cp terraform /usr/local/bin \
-    && rm terraform_$TF_VER_linux_amd64.zip
+    && rm terraform_$TF_VER_linux_amd64.zip \
+    && echo ${TF_VER}
 
 #ARG TAG
 #ARG TF_VER
