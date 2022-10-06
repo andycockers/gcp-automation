@@ -2,11 +2,13 @@
 
 ARG TAG
 ARG TF_VER
+
 FROM golang:${TAG} AS base
 RUN echo "This stage is used on all architectures"
 RUN apk add --update --no-cache
 
 # arm64-specific stage
+ARG TF_VER
 FROM base AS build-arm64
 RUN echo "This stage is used on arm64"
 RUN	wget https://releases.hashicorp.com/terraform/${TF_VER}/terraform_${TF_VER}_linux_arm64.zip \
@@ -15,6 +17,7 @@ RUN	wget https://releases.hashicorp.com/terraform/${TF_VER}/terraform_${TF_VER}_
     && rm terraform_${TF_VER}_linux_arm64.zip
 
 # amd64-specific stage
+ARG TF_VER
 FROM base AS build-amd64
 RUN echo "This stage is used on amd64 (x86)"
 RUN wget https://releases.hashicorp.com/terraform/${TF_VER}/terraform_${TF_VER}_linux_amd64.zip \
