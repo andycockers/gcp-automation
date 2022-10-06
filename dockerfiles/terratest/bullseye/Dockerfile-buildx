@@ -5,15 +5,16 @@ ARG TF_VER
 
 FROM golang:${TAG} AS base
 RUN echo "This stage is used on all architectures"
-RUN apt-get update && apt-get install zip unzip -y \
-    && apt-get autoclean \
-	&& apt-get autoremove
+RUN apt-get update
 
 # arm64-specific stage
 ARG TF_VER
 FROM base AS build-arm64
 RUN echo "This stage is used on arm64"
-RUN	wget https://releases.hashicorp.com/terraform/${TF_VER}/terraform_${TF_VER}_linux_arm64.zip \
+RUN	apt-get install zip unzip -y \
+    && apt-get autoclean \
+	&& apt-get autoremove \
+    && wget https://releases.hashicorp.com/terraform/${TF_VER}/terraform_${TF_VER}_linux_arm64.zip \
     && unzip terraform_${TF_VER}_linux_arm64.zip \
     && cp terraform /usr/local/bin \
     && rm terraform_${TF_VER}_linux_arm64.zip
@@ -22,7 +23,10 @@ RUN	wget https://releases.hashicorp.com/terraform/${TF_VER}/terraform_${TF_VER}_
 ARG TF_VER
 FROM base AS build-amd64
 RUN echo "This stage is used on amd64 (x86)"
-RUN wget https://releases.hashicorp.com/terraform/${TF_VER}/terraform_${TF_VER}_linux_amd64.zip \
+RUN apt-get install zip unzip -y \
+    && apt-get autoclean \
+	&& apt-get autoremove \
+    && wget https://releases.hashicorp.com/terraform/${TF_VER}/terraform_${TF_VER}_linux_amd64.zip \
     && unzip terraform_${TF_VER}_linux_amd64.zip \
     && cp terraform /usr/local/bin \
     && rm terraform_${TF_VER}_linux_amd64.zip
