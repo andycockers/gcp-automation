@@ -1,9 +1,9 @@
 # docker buildx build --platform linux/amd64,linux/arm64 --progress=plain --push -t calmmopey/terratest .
 
 
+FROM --platform=linux/amd64 golang:${TAG} as stage-amd64
 ARG TAG
 ARG TF_VER
-FROM --platform=linux/amd64 golang:${TAG} as stage-amd64
 RUN apt-get install zip unzip -y \
     && apt-get autoclean \
 	&& apt-get autoremove \
