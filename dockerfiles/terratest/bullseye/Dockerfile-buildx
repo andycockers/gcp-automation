@@ -3,7 +3,7 @@
 ARG TAG
 ARG TF_VER
 
-FROM golang:${TAG}} AS base
+FROM golang:${TAG} AS base
 RUN echo "This stage is used on all architectures"
 RUN apt-get update && apt-get install zip unzip -y \
     && apt-get autoclean \
