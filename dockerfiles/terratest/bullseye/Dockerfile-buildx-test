@@ -1,17 +1,23 @@
 # docker buildx build --platform linux/amd64,linux/arm64 --progress=plain --push -t calmmopey/terratest .
 
+
 ARG TAG
 ARG TF_VER
 
-FROM golang:${TAG}
-ARG TARGETARCH
-
-RUN apt-get update && apt-get install -y zip unzip \
-    &&  case ${TARGETARCH} in \
-            "amd64")  TF_ARCH=amd64  ;; \
-            "arm64")  TF_ARCH=arm64  ;; \
-        esac \
-    && wget https://releases.hashicorp.com/terraform/${TF_VER}/terraform_${TF_VER}_linux_${TF_ARCH}.zip \
-    && unzip terraform_${TF_VER}_linux_${TF_ARCH}.zip \
+FROM --platform=linux/amd64 golang:${TAG} as stage-amd64
+RUN apt-get install zip unzip -y \
+    && apt-get autoclean \
+	&& apt-get autoremove \
+    && wget https://releases.hashicorp.com/terraform/${TF_VER}/terraform_${TF_VER}_linux_amd64.zip \
+    && unzip terraform_${TF_VER}_linux_amd64.zip \
     && cp terraform /usr/local/bin \
-    && rm terraform_${TF_VER}_linux_${TF_ARCH}.zip
+    && rm terraform_${TF_VER}_linux_amd64.zip
+
+FROM --platform=linux/amd64 golang:${TAG} as stage-arm64
+RUN apt-get install zip unzip -y \
+    && apt-get autoclean \
+	&& apt-get autoremove \
+    && wget https://releases.hashicorp.com/terraform/${TF_VER}/terraform_${TF_VER}_linux_arm64.zip \
+    && unzip terraform_${TF_VER}_linux_arm64.zip \
+    && cp terraform /usr/local/bin \
+    && rm terraform_${TF_VER}_linux_arm64.zip
