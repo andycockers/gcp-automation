@@ -1,6 +1,6 @@
 ARG TAG
-ARG TF_VER
 FROM --platform=linux/amd64 golang:$TAG as stage-amd64
+ARG TF_VER
 RUN apt-get install zip unzip -y \
     && apt-get autoclean \
 	&& apt-get autoremove \
