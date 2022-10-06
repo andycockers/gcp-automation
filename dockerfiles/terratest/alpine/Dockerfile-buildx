@@ -5,7 +5,9 @@ ARG TF_VER
 
 FROM golang:${TAG} AS base
 RUN echo "This stage is used on all architectures"
-RUN apk add --update --no-cache
+RUN apk add --update --no-cache \
+    &&   apk add ca-certificates wget \                                                                                                                                                                                                      
+    &&   update-ca-certificates    
 
 # arm64-specific stage
 ARG TF_VER
