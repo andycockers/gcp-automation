@@ -1,8 +1,6 @@
 # docker buildx build --platform linux/amd64,linux/arm64 --progress=plain --push -t calmmopey/terratest .
 
 ARG TAG
-ARG TF_VER
-
 FROM golang:${TAG} AS base
 RUN echo "This stage is used on all architectures"
 RUN apk add --update --no-cache \
@@ -10,8 +8,8 @@ RUN apk add --update --no-cache \
     &&   update-ca-certificates    
 
 # arm64-specific stage
-ARG TF_VER
 FROM base AS build-arm64
+ARG TF_VER
 RUN echo "This stage is used on arm64"
 RUN	wget https://releases.hashicorp.com/terraform/${TF_VER}/terraform_${TF_VER}_linux_arm64.zip \
     && unzip terraform_${TF_VER}_linux_arm64.zip \
@@ -19,8 +17,8 @@ RUN	wget https://releases.hashicorp.com/terraform/${TF_VER}/terraform_${TF_VER}_
     && rm terraform_${TF_VER}_linux_arm64.zip
 
 # amd64-specific stage
-ARG TF_VER
 FROM base AS build-amd64
+ARG TF_VER
 RUN echo "This stage is used on amd64 (x86)"
 RUN wget https://releases.hashicorp.com/terraform/${TF_VER}/terraform_${TF_VER}_linux_amd64.zip \
     && unzip terraform_${TF_VER}_linux_amd64.zip \
