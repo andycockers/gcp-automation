@@ -11,8 +11,8 @@ RUN apt-get update \
     && rm terraform_${TF_VER}_linux_amd64.zip
 
 ARG TAG
-ARG TF_VER
 FROM --platform=linux/arm64 golang:${TAG} as stage-arm64
+ARG TF_VER
 RUN apt-get update \
     && apt-get install zip unzip -y \
     && apt-get autoclean \
