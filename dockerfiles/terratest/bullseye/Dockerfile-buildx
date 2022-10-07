@@ -1,15 +1,13 @@
 # docker buildx build --platform linux/amd64,linux/arm64/v8 --progress=plain --push -t calmmopey/terratest .
 
 ARG TAG
-ARG TF_VER
-
 FROM golang:${TAG} AS base
 RUN echo "This stage is used on all architectures"
 RUN apt-get update
 
 # arm64-specific stage
-ARG TF_VER
 FROM base AS build-arm64
+ARG TF_VER
 RUN echo "This stage is used on arm64"
 RUN	apt-get install zip unzip -y \
     && apt-get autoclean \
@@ -20,8 +18,8 @@ RUN	apt-get install zip unzip -y \
     && rm terraform_${TF_VER}_linux_arm64.zip
 
 # amd64-specific stage
-ARG TF_VER
 FROM base AS build-amd64
+ARG TF_VER
 RUN echo "This stage is used on amd64 (x86)"
 RUN apt-get install zip unzip -y \
     && apt-get autoclean \
