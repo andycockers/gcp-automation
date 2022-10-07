@@ -124,4 +124,21 @@
   kubernetes.core.k8s:
      state: present
      src: /tmp/hetzner-private-key.yaml
-     namespace: jenkins     
+     namespace: jenkins
+
+- name: Create Github SSH key as text secret
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: Secret
+      metadata:
+        name: github-string
+        namespace: jenkins
+        labels:
+          "jenkins.io/credentials-type": "secretText"
+        annotations:
+          "jenkins.io/credentials-description" : "Github SSH key as string"
+      type: Opaque
+      stringData:
+        text: "{{ github_text }}"
