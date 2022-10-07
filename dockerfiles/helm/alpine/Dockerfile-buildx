@@ -1,22 +1,21 @@
-FROM alpine AS base
-RUN echo "This stage is used on all architectures"
-RUN apk add --update --no-cache \
-    && apk add --no-cache git
-
 # arm64-specific stage
-FROM base AS build-arm64
+FROM --platform=linux/arm64 alpine as stage-arm64
 ARG HELM_VER
 RUN echo "This stage is used on arm64"
-RUN	wget https://get.helm.sh/helm-v${HELM_VER}-linux-arm.tar.gz \
+RUN	apk add --update --no-cache \
+    && apk add --no-cache git \
+    && wget https://get.helm.sh/helm-v${HELM_VER}-linux-arm.tar.gz \
     && tar xvf helm-v${HELM_VER}-linux-arm.tar.gz \
     && cp linux-arm64/helm /usr/local/bin \
     && rm helm-v${HELM_VER}-linux-arm.tar.gz
 
 # amd64-specific stage
-FROM base AS build-amd64
+FROM --platform=linux/amd64 alpine as stage-amd64
 ARG HELM_VER
 RUN echo "This stage is used on amd64 (x86)"
-RUN	wget https://get.helm.sh/helm-v${HELM_VER}-linux-amd64.tar.gz \
+RUN	apk add --update --no-cache \
+    && apk add --no-cache git \
+    wget https://get.helm.sh/helm-v${HELM_VER}-linux-amd64.tar.gz \
     && tar xvf helm-v${HELM_VER}-linux-amd64.tar.gz \
     && cp linux-amd64/helm /usr/local/bin \
     && rm helm-v${HELM_VER}-linux-amd64.tar.gz
