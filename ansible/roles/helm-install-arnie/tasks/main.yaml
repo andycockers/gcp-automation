@@ -25,5 +25,3 @@
 
 - name: helm install arnie
   shell: helm install arnie cockers/arnie --version 0.0.6 --namespace arnie
-  environment:
-    GOOGLE_APPLICATION_CREDENTIALS: /home/ubuntu/norse-acrobat-203806-5bc942084b87.json

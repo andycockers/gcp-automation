@@ -27,4 +27,4 @@
     - role: k8s-apply-ingress-nginx
     - role: k8s-apply-cert-manager
     - role: k8s-apply-letsencrypt-prod
-    - role: helm-install-gcs
+    - role: helm-add-cockers-repo

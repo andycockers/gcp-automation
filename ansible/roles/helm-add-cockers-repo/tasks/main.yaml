@@ -1,0 +1,3 @@
+- name: Add cockers Helm repo
+  shell: helm repo add cockers https://andycockers.github.io/musical-octo-happiness/
+  

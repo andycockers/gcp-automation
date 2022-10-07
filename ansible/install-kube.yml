@@ -30,4 +30,4 @@
     - role: k8s-apply-cert-manager
     - role: k8s-apply-letsencrypt-prod
     - role: redir-traffic
-    - role: helm-install-gcs
+    - role: helm-add-cockers-repo
