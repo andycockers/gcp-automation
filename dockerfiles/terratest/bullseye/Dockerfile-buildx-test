@@ -1,8 +1,7 @@
 ARG TAG
 FROM --platform=linux/amd64 golang:${TAG} as stage-amd64
 ARG TF_VER
-RUN echo ${TF_VER} \
-    && apt-get update \
+RUN apt-get update \
     && apt-get install zip unzip -y \
     && apt-get autoclean \
 	&& apt-get autoremove \
@@ -11,13 +10,14 @@ RUN echo ${TF_VER} \
     && cp terraform /usr/local/bin \
     && rm terraform_${TF_VER}_linux_amd64.zip
 
-#ARG TAG
-#ARG TF_VER
-#FROM --platform=linux/amd64 golang:${TAG} as stage-arm64
-#RUN apt-get install zip unzip -y \
-#    && apt-get autoclean \
-#	&& apt-get autoremove \
-#    && wget https://releases.hashicorp.com/terraform/${TF_VER}/terraform_${TF_VER}_linux_arm64.zip \
-#    && unzip terraform_${TF_VER}_linux_arm64.zip \
-#    && cp terraform /usr/local/bin \
-#    && rm terraform_${TF_VER}_linux_arm64.zip
+ARG TAG
+ARG TF_VER
+FROM --platform=linux/arm64 golang:${TAG} as stage-arm64
+RUN apt-get update \
+    && apt-get install zip unzip -y \
+    && apt-get autoclean \
+	&& apt-get autoremove \
+    && wget https://releases.hashicorp.com/terraform/${TF_VER}/terraform_${TF_VER}_linux_arm64.zip \
+    && unzip terraform_${TF_VER}_linux_arm64.zip \
+    && cp terraform /usr/local/bin \
+    && rm terraform_${TF_VER}_linux_arm64.zip
