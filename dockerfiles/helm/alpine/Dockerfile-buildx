@@ -1,5 +1,5 @@
 # arm64-specific stage
-FROM --platform=linux/arm64 alpine as stage-arm64
+FROM --platform=linux/arm64/v8 alpine as stage-arm64
 ARG HELM_VER
 RUN echo "This stage is used on arm64"
 RUN	apk add --update --no-cache \
