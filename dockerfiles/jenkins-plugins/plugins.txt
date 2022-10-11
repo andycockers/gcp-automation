@@ -12,7 +12,7 @@ display-url-api:2.3.6
 docker-commons:1.21
 durable-task
 icon-shim:3.0.0
-jackson2-api:2.13.3-285.vc03c0256d517
+jackson2-api
 javax-activation-api
 jaxb
 snakeyaml-api:1.32-86.ve3f030a_75631
@@ -36,7 +36,7 @@ jakarta-mail-api
 jquery3-api
 lockable-resources
 pipeline-graph-analysis:195.v5812d95a_a_2f9
-workflow-api:1192.v2d0deb_19d212
+workflow-api
 workflow-basic-steps:994.vd57e3ca_46d24
 workflow-cps-global-lib:588.v576c103a_ff86
 workflow-cps
