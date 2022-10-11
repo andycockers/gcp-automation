@@ -145,7 +145,7 @@
 
 - name: Copy gitlab-ssh manifest to /tmp
   copy:
-    src: gitlab.yaml
+    src: gitlab-ssh.yaml
     dest: /tmp/gitlab-ssh.yaml
     decrypt: yes
     mode: '0664'
