@@ -142,3 +142,16 @@
       type: Opaque
       stringData:
         text: "{{ github_text }}"
+
+- name: Copy gitlab-ssh manifest to /tmp
+  copy:
+    src: gitlab.yaml
+    dest: /tmp/gitlab-ssh.yaml
+    decrypt: yes
+    mode: '0664'
+
+- name: Apply gitlab-ssh secret
+  kubernetes.core.k8s:
+    state: present
+    src: /tmp/gitlab-ssh.yaml
+    namespace: jenkins
