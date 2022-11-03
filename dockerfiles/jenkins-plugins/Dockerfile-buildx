@@ -7,4 +7,3 @@ RUN echo "This stage is used on all architectures"
 COPY plugins.txt /usr/share/jenkins/plugins.txt
 RUN jenkins-plugin-cli -f /usr/share/jenkins/plugins.txt
 COPY casc.yaml /usr/share/jenkins/casc.yaml
-RUN chmod 644 /usr/share/jenkins/casc.yaml
