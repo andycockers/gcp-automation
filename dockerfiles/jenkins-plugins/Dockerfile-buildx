@@ -2,8 +2,8 @@
 
 ARG TAG
 FROM jenkins/jenkins:${TAG} AS base
-ENV CASC_JENKINS_CONFIG /var/jenkins_home/casc.yaml
+ENV CASC_JENKINS_CONFIG /usr/share/jenkins/casc.yaml
 RUN echo "This stage is used on all architectures"
 COPY plugins.txt /usr/share/jenkins/plugins.txt
 RUN jenkins-plugin-cli -f /usr/share/jenkins/plugins.txt
-COPY casc.yaml /usr/share/casc.yaml
+COPY casc.yaml /usr/share/jenkins/casc.yaml
