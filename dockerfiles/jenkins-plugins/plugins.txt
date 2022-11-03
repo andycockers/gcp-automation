@@ -80,3 +80,4 @@ pipeline-input-step
 pipeline-model-api
 pipeline-stage-tags-metadata
 ssh-slaves
+cloudbees-folder
