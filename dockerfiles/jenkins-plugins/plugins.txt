@@ -3,7 +3,7 @@ workflow-aggregator:590.v6a_d052e5a_a_b_5
 git
 configuration-as-code
 bouncycastle-api:2.26
-branch-api:2.1046.v0ca_37783ecc5
+branch-api
 caffeine-api:2.9.3-65.v6a_47d0f4d1fe
 command-launcher:90.v669d7ccb_7c31
 credentials:1189.vf61b_a_5e2f62e
