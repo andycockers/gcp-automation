@@ -26,7 +26,7 @@ pipeline-model-extensions
 docker-workflow
 kubernetes-client-api:5.12.2-193.v26a_6078f65a_9
 jdk-tool
-junit
+junit:1156.vcf492e95a_a_b_0
 bootstrap4-api:4.6.0-5
 checks-api
 echarts-api
