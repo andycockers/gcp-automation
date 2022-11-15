@@ -82,4 +82,4 @@ pipeline-stage-tags-metadata
 ssh-slaves
 cloudbees-folder
 cloud-stats
-cloudbees-disk-usage-simple
+cloudbees-disk-usage-simple:178.v1a_4d2f6359a_8
