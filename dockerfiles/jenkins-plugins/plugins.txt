@@ -26,7 +26,7 @@ pipeline-model-extensions
 docker-workflow
 kubernetes-client-api:5.12.2-193.v26a_6078f65a_9
 jdk-tool
-junit:1156.vcf492e95a_a_b_0
+junit:1160.vf1f01a_a_ea_b_7f
 bootstrap4-api:4.6.0-5
 checks-api
 echarts-api
@@ -39,7 +39,6 @@ lockable-resources
 pipeline-graph-analysis:195.v5812d95a_a_2f9
 workflow-api
 workflow-basic-steps:994.vd57e3ca_46d24
-workflow-cps-global-lib:588.v576c103a_ff86
 workflow-cps
 pipeline-rest-api
 pipeline-stage-view
@@ -52,7 +51,7 @@ mina-sshd-api-common:2.9.1-44.v476733c11f82
 mina-sshd-api-core:2.9.1-44.v476733c11f82
 trilead-api:2.72.v2a_3236754f73
 google-login:1.6
-metrics:4.2.10-389.v93143621b_050
+metrics
 pipeline-groovy-lib
 workflow-step-api:639.v6eca_cd8c04a_a_
 scm-api:621.vda_a_b_055e58f7
